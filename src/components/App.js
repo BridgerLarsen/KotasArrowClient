@@ -11,6 +11,8 @@ import Availability from './pages/availability';
 import Contact from './pages/contact';
 import FAQ from './pages/faq';
 
+import Navigation from './navigation';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,20 +22,24 @@ class App extends Component {
     return (
       <div className="container">
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/about-us" component={About} />
-            <Route path="/customer-reviews" component={Reviews} />
+          <div>
+            <Navigation />
 
-            <Route path="/our-dogs" component={OurDogs} />
-            <Route path="/our-dogs/males" component={Males} />
-            <Route path="/our-dogs/females" component={Females} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about-us" component={About} />
+              <Route path="/customer-reviews" component={Reviews} />
 
-            <Route path="/availability" component={Availability} />
-            <Route path="/contact-us" component={Contact} />
+              <Route path="/our-dogs" component={OurDogs} />
+              <Route path="/our-dogs/males" component={Males} />
+              <Route path="/our-dogs/females" component={Females} />
 
-            <Route path="/faq" component={FAQ} />
-          </Switch>
+              <Route path="/availability" component={Availability} />
+              <Route path="/contact-us" component={Contact} />
+
+              <Route path="/faq" component={FAQ} />
+            </Switch>
+          </div>
         </Router>
       </div>
     );

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import HeaderImage from '../headerImage';
+
 class Home extends Component {
     constructor() {
         super();
@@ -8,7 +10,7 @@ class Home extends Component {
     render() {
         return (
             <div className="homepage-wrapper">
-                Home page here
+                <HeaderImage img={"http://localhost:3000/images/img.jpg"} />
             </div>
         )
     }

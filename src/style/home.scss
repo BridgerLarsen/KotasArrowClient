@@ -1,0 +1,10 @@
+.homepage-wrapper {
+    grid-row: header-s/header-e;
+    margin-top: -76px;
+    .img {
+        img {
+            width: 100%;
+            min-height: 880px;
+        }
+    }
+}
