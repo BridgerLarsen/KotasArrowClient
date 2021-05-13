@@ -2,12 +2,15 @@ import React from 'react';
 
 function HeaderImage(props) {
     return (
-        <div className="img" 
+        <div className={props.className} 
             style={
                 {
                     backgroundImage: `url(${props.img})`,
                     width: "100%",
-                    minHeight: "880px"
+                    minHeight: props.height,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center, center",
                 }
             }
         >

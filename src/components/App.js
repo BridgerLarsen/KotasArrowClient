@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Home from './pages/home';
 import About from './pages/about';
@@ -12,6 +14,8 @@ import Contact from './pages/contact';
 import FAQ from './pages/faq';
 
 import Navigation from './navigation';
+
+library.add(faSortDown);
 
 class App extends Component {
   constructor(props) {
@@ -30,9 +34,9 @@ class App extends Component {
               <Route path="/about-us" component={About} />
               <Route path="/customer-reviews" component={Reviews} />
 
-              <Route path="/our-dogs" component={OurDogs} />
-              <Route path="/our-dogs/males" component={Males} />
-              <Route path="/our-dogs/females" component={Females} />
+              <Route path="/our-aussies" component={OurDogs} />
+              <Route path="/our-aussies/males" component={Males} />
+              <Route path="/our-aussies/females" component={Females} />
 
               <Route path="/availability" component={Availability} />
               <Route path="/contact-us" component={Contact} />

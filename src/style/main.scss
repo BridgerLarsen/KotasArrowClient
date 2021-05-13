@@ -8,8 +8,6 @@ html {
 
 .container {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: [header-s] 1fr [header-e content-s] 1fr [content-e footer-s] 1fr [footer-e];
     position: relative;
 }
 
@@ -19,3 +17,5 @@ html {
 @import "./mixins.scss";
 @import "./navigation.scss";
 @import "./home.scss";
+
+@import "./buttons.scss";

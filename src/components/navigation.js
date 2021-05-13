@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Navigation extends Component {
     constructor() {
@@ -29,8 +30,8 @@ class Navigation extends Component {
                     </div>
 
                     <div className="navlink-wrapper">
-                        <NavLink to="/our-dogs">
-                            Our Dogs
+                        <NavLink to="/our-aussies">
+                            Our Aussies <FontAwesomeIcon icon="sort-down" />
                         </NavLink>
                     </div>
 
