@@ -4,10 +4,6 @@ import HeaderImage from '../headerImage';
 import Footer from '../footer';
 
 class About extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div className="about-page-wrapper">
@@ -20,7 +16,7 @@ class About extends Component {
 
                 <div className="page-content-wrapper">
                     <div className="page-content">
-                        <img alt="about Image" className="page-content-img-one" src="http://via.placeholder.com/400x300" />
+                        <img alt="About One" className="page-content-img-one" src="http://via.placeholder.com/400x300" />
 
                         <p className="page-content-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, voluptate pariatur, repudiandae ipsum consectetur nam maiores neque perspiciatis ea provident reiciendis iste laboriosam nulla vitae facilis? Deleniti error recusandae ratione esse doloribus quam voluptate quod ipsum sit? Eaque est repellendus alias, laboriosam quas maiores dolore inventore quasi pariatur neque explicabo minima impedit incidunt perspiciatis saepe quaerat excepturi?</p>
 
@@ -28,7 +24,7 @@ class About extends Component {
 
                         <p className="page-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam iure hic sunt atque odio, praesentium facilis beatae numquam porro ipsam natus dicta dolorum tempora laborum ad a aliquam nulla quos. Quibusdam, enim. Saepe natus, vel rem hic repellat ipsum distinctio delectus aliquid voluptatum tempora qui iusto, quo beatae pariatur id vitae error libero consequuntur expedita porro inventore earum dignissimos eos illo? Illum natus nam, ipsam culpa quaerat asperiores ratione inventore.</p>
 
-                        <img alt="about Image" className="page-content-img-two" src="http://via.placeholder.com/360x480" />
+                        <img alt="About Two" className="page-content-img-two" src="http://via.placeholder.com/360x480" />
 
                         <p className="page-content-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat deserunt in nesciunt impedit sed debitis dolores repellendus illo consectetur sunt nihil nostrum, facere suscipit excepturi quae nisi cum nam pariatur asperiores voluptates explicabo? Beatae ducimus architecto numquam impedit delectus, iste dicta. Laudantium pariatur numquam ab et minima! Delectus provident quas non debitis illo maxime id atque! Vitae, totam?</p>
 

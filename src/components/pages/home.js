@@ -6,10 +6,6 @@ import Button from '../buttons';
 import Footer from '../footer';
 
 class Home extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div className="homepage-wrapper">
@@ -48,7 +44,7 @@ class Home extends Component {
                 <div className="homepage-about-wrapper">
                     <div className="about-container">
                         <div className="about-left-column">
-                            <img alt="home Image" className="about-img" src="http://via.placeholder.com/550x464" />     
+                            <img alt="Home About" className="about-img" src="http://via.placeholder.com/550x464" />     
                         </div>
 
                         <div className="about-right-column">

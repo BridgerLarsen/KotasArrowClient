@@ -3,10 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Navigation extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return(
             <div className='nav-wrapper'>

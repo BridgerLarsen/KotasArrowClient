@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSortDown, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -19,7 +19,15 @@ import Navigation from './navigation';
 
 import ScrollToTop from '../helpers/scrollToTop';
 
-library.add(faSortDown, faYoutube, faFacebook, faInstagram, faCopyright);
+library.add(
+  faSortDown, 
+  faYoutube, 
+  faFacebook,
+  faInstagram, 
+  faCopyright,
+  faChevronRight,
+  faChevronLeft
+);
 
 class App extends Component {
   constructor(props) {

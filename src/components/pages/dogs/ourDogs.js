@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class OurDogs extends Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <div className="our-dogs-page-wrapper">
