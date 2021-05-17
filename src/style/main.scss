@@ -16,6 +16,9 @@ html {
 @import "./variables.scss";
 @import "./mixins.scss";
 @import "./navigation.scss";
-@import "./home.scss";
+@import "./pages/home.scss";
+@import "./pages/about.scss";
+@import "./footer.scss";
 
+@import "./headerImage.scss"; 
 @import "./buttons.scss";

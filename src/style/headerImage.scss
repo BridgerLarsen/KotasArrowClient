@@ -1,0 +1,17 @@
+.header-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.header-image-logo {
+    position: absolute;
+    top: 290px;
+}
+
+.header-image-title {
+    position: absolute;
+    top: 220px;
+    font-size: 40px;
+    color: $white;
+    font-family: $LibreFont;
+}

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import HeaderImage from '../headerImage';
 import ContentImgDetails from '../contentImgDetails';
 import Button from '../buttons';
+import Footer from '../footer';
 
 class Home extends Component {
     constructor() {
@@ -15,7 +16,8 @@ class Home extends Component {
                 <HeaderImage 
                     img={"https://greenvalleyaussies.com/assets/uploads/snow-puppies-australian-shepherds-2.jpg"} 
                     className="homepage-img" 
-                    height="950px"
+                    height="874px"
+                    logo={"https://greenvalleyaussies.com/assets/uploads/2020/01/logo-white-shadow.png"}
                 />
 
                 <div className="homepage-content-detail">
@@ -32,7 +34,7 @@ class Home extends Component {
                     </div>
                 </div>
 
-                <div className="homepage-availabilty">
+                <div className="homepage-availability">
                     <ContentImgDetails 
                         className="availability" 
                         height="480px"
@@ -43,30 +45,31 @@ class Home extends Component {
                     />
                 </div>
 
-                <div className="homepage-about">
-                    <div    
-                        className="about-img" 
-                        style={
-                            {
-                                backgroundImage: "url(http://via.placeholder.com/550x464)",
-                            }
-                        } 
-                    />
+                <div className="homepage-about-wrapper">
+                    <div className="about-container">
+                        <div className="about-left-column">
+                            <img alt="home Image" className="about-img" src="http://via.placeholder.com/550x464" />     
+                        </div>
 
-                    <div className="about-title">
-                        About Us
+                        <div className="about-right-column">
+                            <div className="about-title">
+                                About Us
+                            </div>
+
+                            <p className="about-description">
+                                Green Valley Australian Shepherds is owned and operated by Jeff and Emily Mabey. Our dogs enjoy a pleasant, fun-filled life near Salt Lake City by the 4 – Generation Mabey Farm in South Jordan. Between our home, Jeff’s Family Farm and Emily’s Family Ranch our dogs have ample room to run for lots of fun and adventures!
+                            </p>
+
+                            <Button 
+                                className="about-button" 
+                                path="/about-us"    
+                                buttonHeader="More About Us"
+                            />
+                        </div>
                     </div>
-
-                    <p className="about-description">
-                        Green Valley Australian Shepherds is owned and operated by Jeff and Emily Mabey. Our dogs enjoy a pleasant, fun-filled life near Salt Lake City by the 4 – Generation Mabey Farm in South Jordan. Between our home, Jeff’s Family Farm and Emily’s Family Ranch our dogs have ample room to run for lots of fun and adventures!
-                    </p>
-
-                    <Button 
-                        className="about" 
-                        path="/about-us"    
-                        buttonHeader="More About Us"
-                    />
                 </div>
+
+                <Footer />
             </div>
         )
     }

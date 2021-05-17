@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Home from './pages/home';
@@ -15,7 +17,9 @@ import FAQ from './pages/faq';
 
 import Navigation from './navigation';
 
-library.add(faSortDown);
+import ScrollToTop from '../helpers/scrollToTop';
+
+library.add(faSortDown, faYoutube, faFacebook, faInstagram, faCopyright);
 
 class App extends Component {
   constructor(props) {
@@ -26,24 +30,26 @@ class App extends Component {
     return (
       <div className="container">
         <Router>
-          <div>
-            <Navigation />
+          <ScrollToTop>
+            <div>
+              <Navigation />
 
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about-us" component={About} />
-              <Route path="/customer-reviews" component={Reviews} />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/about-us" component={About} />
+                <Route path="/customer-reviews" component={Reviews} />
 
-              <Route path="/our-aussies" component={OurDogs} />
-              <Route path="/our-aussies/males" component={Males} />
-              <Route path="/our-aussies/females" component={Females} />
+                <Route path="/our-aussies" component={OurDogs} />
+                <Route path="/our-aussies/males" component={Males} />
+                <Route path="/our-aussies/females" component={Females} />
 
-              <Route path="/availability" component={Availability} />
-              <Route path="/contact-us" component={Contact} />
+                <Route path="/availability" component={Availability} />
+                <Route path="/contact-us" component={Contact} />
 
-              <Route path="/faq" component={FAQ} />
-            </Switch>
-          </div>
+                <Route path="/faq" component={FAQ} />
+              </Switch>
+            </div>
+          </ScrollToTop>
         </Router>
       </div>
     );

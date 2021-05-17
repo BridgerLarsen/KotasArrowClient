@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import HeaderImage from '../headerImage';
+
 class Reviews extends Component {
     constructor() {
         super();
@@ -7,8 +9,13 @@ class Reviews extends Component {
 
     render() {
         return (
-            <div className="reviewpage-wrapper">
-                Reviews go here
+            <div className="review-page-wrapper">
+                <HeaderImage
+                    className="review-page-img" 
+                    img="http://via.placeholder.com/1000x1000"  
+                    height="480px"
+                    title="Customer Reviews"
+                />
             </div>
         )
     }

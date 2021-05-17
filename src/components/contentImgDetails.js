@@ -17,6 +17,7 @@ function ContentImgDetails(props) {
                         height: props.height
                     }
                 }
+                alt="img"
             />
 
             <div className={`${props.className}-details`}>

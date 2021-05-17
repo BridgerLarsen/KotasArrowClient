@@ -1,0 +1,114 @@
+.homepage-wrapper {
+    position: relative;
+}
+
+.homepage-content-detail {
+    width: 100%;
+    height: 416px;
+
+    .content-detail {
+        padding: 90px 20px;
+    }
+    
+    .content-detail-title {
+        font-size: 56px;
+        align-self: center;
+        margin: 0;
+        color: $green;
+        font-family: $LibreFont;
+        text-align: center;
+    }
+
+    .content-detail-description {
+        font-size: 21px;
+        text-align: center;
+        font-family: $SourceSansPro;
+        color: $black;
+    }
+}
+
+.homepage-availability {
+    .availability-content-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        .availability-details { 
+            position: absolute;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: [title-s] 1fr [title-e description-s] 1fr [description-e btn-s] 1fr [btn-e];
+            justify-content: center;
+            height: 149px;
+            text-align: center;
+    
+            & > * {
+                color: $white;
+            }
+    
+            .details-title {
+                grid-row: title-s/title-e;
+                font-size: 28px;
+                font-family: $LibreFont;
+            }
+    
+            .details-description {
+                grid-row: description-s/description-e;
+                font-family: $SourceSansPro;
+                font-size: 18px;
+            }
+    
+            .details-button {
+                grid-row: btn-s/btn-e;
+                align-self: center;
+            }
+        }
+    }
+}
+
+.homepage-about-wrapper {
+    background-color: $gray;
+    height: 604px;
+
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 65px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1071px;
+        height: 100%;
+
+        .about-right-column {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            text-align: center;
+            height: 301px;
+            align-items: center;
+
+            .about-title {
+                font-size: 39px;
+                color: $white;
+                font-family: $LibreFont;
+            }
+
+            .about-description {
+                font-size: 18px;
+                color: $white;
+                font-family: $SourceSansPro;
+                line-height: 1.4em;
+            }
+
+            .about-button {
+                margin-top: 25px;
+                
+                a {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
