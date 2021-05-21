@@ -15,7 +15,10 @@ html {
 
 @import "./variables.scss";
 @import "./mixins.scss";
-@import "./navigation.scss";
+
+@import "./navigation/navigation.scss";
+@import "./navigation/dropdown.scss";
+
 @import "./pages/home.scss";
 @import "./pages/about.scss";
 @import "./pages/review.scss";
@@ -23,3 +26,4 @@ html {
 
 @import "./headerImage.scss"; 
 @import "./buttons.scss";
+@import "./dogs.scss";

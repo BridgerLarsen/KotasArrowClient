@@ -26,6 +26,10 @@
         svg {
             font-size: 35px;
             color: $cbd;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
         .review-count {

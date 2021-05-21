@@ -1,0 +1,1 @@
+export const SET_DOGS_INFO = 'SET_DOGS_INFO';

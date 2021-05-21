@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 import "./style/main.scss"
+import reducers from './reducers';
+
+const createStoreWithMiddleware = applyMiddleware()(compose((window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null)(createStore)));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={createStoreWithMiddleware(reducers)}>
+      <React.StrictMode>
+        <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('app-wrapper')
 );
 

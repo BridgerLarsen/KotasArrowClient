@@ -1,13 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import HeaderImage from '../../headerImage';
+import Dogs from '../../dogs';
+import Footer from '../../footer';
 
 class OurDogs extends Component {
     render() {
         return (
             <div className="our-dogs-page-wrapper">
-                List of Dogs goes here
+                <HeaderImage 
+                    className="our-dogs-img"  
+                    img="http://via.placeholder.com/1000x1000"  
+                    height="480px"
+                    title="Our Aussies"
+                />
+
+                <Dogs dogs={this.props.dogs} />
+
+                <Footer />
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        dogs: state.dogs.dogs
+    }
+}
+
+OurDogs = connect(mapStateToProps, null)(OurDogs);
 
 export default OurDogs;

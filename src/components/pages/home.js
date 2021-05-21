@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import HeaderImage from '../headerImage';
 import ContentImgDetails from '../contentImgDetails';
 import Button from '../buttons';
 import Footer from '../footer';
+import Dogs from '../dogs';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="homepage-wrapper">
@@ -41,6 +47,8 @@ class Home extends Component {
                     />
                 </div>
 
+                <Dogs dogs={this.props.dogs} home={true} />
+
                 <div className="homepage-about-wrapper">
                     <div className="about-container">
                         <div className="about-left-column">
@@ -70,5 +78,13 @@ class Home extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        dogs: state.dogs.dogs
+    }
+}
+
+Home = connect(mapStateToProps, null)(Home);
 
 export default Home;
