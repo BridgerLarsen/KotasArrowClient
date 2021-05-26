@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import HeaderImg from '../../headerImage';
 import Dogs from '../../dogs';
@@ -20,13 +19,5 @@ class Males extends Component {
         )
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        dogs: state.dogs.dogs
-    }
-}
-
-Males = connect(mapStateToProps, null)(Males);
 
 export default Males;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 import HeaderImage from '../headerImage';
 import ContentImgDetails from '../contentImgDetails';
@@ -46,7 +45,7 @@ class Home extends Component {
                     />
                 </div>
 
-                <Dogs dogs={this.props.dogs} home={true} />
+                <Dogs home={true} />
 
                 <div className="homepage-about-wrapper">
                     <div className="about-container">
@@ -75,13 +74,5 @@ class Home extends Component {
         )
     }
 }
-
-const mapStateToProps = (state) => {
-    return {
-        dogs: state.dogs.dogs
-    }
-}
-
-Home = connect(mapStateToProps, null)(Home);
 
 export default Home;

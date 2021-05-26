@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Dogs extends Component {
     constructor(props) {
@@ -7,11 +8,11 @@ class Dogs extends Component {
     }
 
     renderDogs(dogs, page) {
-        if (dogs) {
-            return dogs.map(dog => {
+        return dogs.map(dog => {
+            if (page && `${dog.gender.toLowerCase()}s` === page) {
                 return (
                     <NavLink 
-                        to={`our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`} 
+                        to={`/our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`} 
                         className="dog" 
                         key={dog._id}
                     >
@@ -20,10 +21,20 @@ class Dogs extends Component {
                         <h1 className="dog-name">{dog.name}</h1>
                     </NavLink>
                 )
-            })
-        } else {
-            return <h1>Content is missing :(</h1>
-        }
+            } else if (!page) {
+                return (
+                    <NavLink 
+                        to={`/our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`} 
+                        className="dog" 
+                        key={dog._id}
+                    >
+                        <img src={dog.imgProfileUrl} />
+    
+                        <h1 className="dog-name">{dog.name}</h1>
+                    </NavLink>
+                )
+            }
+        })
     }
 
     render() {
@@ -38,12 +49,23 @@ class Dogs extends Component {
                     }
 
                     <div className={this.props.home ? "dogs-home" : "dogs"}>
-                        {this.renderDogs(this.props.dogs, this.props.page)}
+                        {this.props.dogs ? 
+                            this.renderDogs(this.props.dogs, this.props.page)
+                            : <h1>Content is missing :(</h1>   
+                        }
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        dogs: state.dogs.dogs
+    }
+}
+
+Dogs = connect(mapStateToProps, null)(Dogs);
 
 export default Dogs;
