@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import HeaderImage from '../headerImage';
 import ContentImgDetails from '../contentImgDetails';
 import Button from '../buttons';
-import Footer from '../footer';
 import Dogs from '../dogs';
 
 class Home extends Component {
@@ -72,8 +71,6 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-
-                <Footer />
             </div>
         )
     }

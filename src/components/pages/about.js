@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import HeaderImage from '../headerImage';
-import Footer from '../footer';
 
 class About extends Component {
     render() {
@@ -37,8 +36,6 @@ class About extends Component {
                         <p className="page-content-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos assumenda deleniti temporibus porro eligendi voluptate neque. Vitae, nesciunt assumenda in architecto autem voluptatem quaerat reiciendis amet, cumque libero eius expedita voluptas quia vero illum recusandae!</p>
                     </div>
                 </div>
-
-                <Footer />
             </div>
         )
     }

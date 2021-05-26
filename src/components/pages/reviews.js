@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import HeaderImage from '../headerImage';
-import Footer from '../footer';
 
 class Reviews extends Component {
     constructor() {
@@ -92,8 +91,6 @@ class Reviews extends Component {
                         {this.state.currentReview + 1}/{this.state.reviews.length}
                     </div>
                 </div>
-
-                <Footer />
             </div>
         )
     }

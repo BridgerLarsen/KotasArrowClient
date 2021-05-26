@@ -6,7 +6,7 @@ class Dogs extends Component {
         super(props);
     }
 
-    renderDogs(dogs) {
+    renderDogs(dogs, page) {
         if (dogs) {
             return dogs.map(dog => {
                 return (
@@ -38,7 +38,7 @@ class Dogs extends Component {
                     }
 
                     <div className={this.props.home ? "dogs-home" : "dogs"}>
-                        {this.renderDogs(this.props.dogs)}
+                        {this.renderDogs(this.props.dogs, this.props.page)}
                     </div>
                 </div>
             </div>

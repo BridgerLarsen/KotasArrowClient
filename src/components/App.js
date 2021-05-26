@@ -24,8 +24,10 @@ import DogDetail from './pages/dogs/dogDetail';
 import Availability from './pages/availability';
 import Contact from './pages/contact';
 import FAQ from './pages/faq';
+import NoMatch from './pages/noMatch';
 
 import Navigation from './navigation/navigation';
+import Footer from './footer';
 
 import ScrollToTop from '../helpers/scrollToTop';
 
@@ -78,7 +80,11 @@ class App extends Component {
                 <Route path="/contact-us" component={Contact} />
 
                 <Route path="/faq" component={FAQ} />
+
+                <Route component={NoMatch} />
               </Switch>
+
+              <Footer />
             </div>
           </ScrollToTop>
         </Router>

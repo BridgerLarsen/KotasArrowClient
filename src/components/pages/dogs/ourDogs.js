@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import HeaderImage from '../../headerImage';
 import Dogs from '../../dogs';
-import Footer from '../../footer';
 
 class OurDogs extends Component {
     render() {
@@ -17,8 +16,6 @@ class OurDogs extends Component {
                 />
 
                 <Dogs dogs={this.props.dogs} />
-
-                <Footer />
             </div>
         )
     }
