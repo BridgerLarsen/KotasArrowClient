@@ -42,6 +42,7 @@ class Home extends Component {
                         title="Wanting to Add a Kota's Arrow Australian Shepherd to your Family?"
                         description="Begin by filling out our Questionnaire and learning more on our FAQ page."
                         buttonHeader="Check Availability"
+                        path="/availability"
                     />
                 </div>
 

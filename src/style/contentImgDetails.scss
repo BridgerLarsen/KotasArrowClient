@@ -1,0 +1,37 @@
+.availability-content-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .availability-details { 
+        position: absolute;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: [title-s] 1fr [title-e description-s] 1fr [description-e btn-s] 1fr [btn-e];
+        justify-content: center;
+        height: 149px;
+        text-align: center;
+
+        & > * {
+            color: $white;
+        }
+
+        .details-title {
+            grid-row: title-s/title-e;
+            font-size: 28px;
+            font-family: $LibreFont;
+        }
+
+        .details-description {
+            grid-row: description-s/description-e;
+            font-family: $SourceSansPro;
+            font-size: 18px;
+        }
+
+        .details-button {
+            grid-row: btn-s/btn-e;
+            align-self: center;
+        }
+    }
+}

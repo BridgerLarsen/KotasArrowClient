@@ -24,6 +24,7 @@ import DogDetail from './pages/dogs/dogDetail';
 import Availability from './pages/availability';
 import Contact from './pages/contact';
 import FAQ from './pages/faq';
+import Questionnaire from './pages/questionnaire';
 import NoMatch from './pages/noMatch';
 
 import Navigation from './navigation/navigation';
@@ -81,6 +82,8 @@ class App extends Component {
                   <Route path="/contact-us" component={Contact} />
 
                   <Route path="/faq" component={FAQ} />
+
+                  <Route path="/questionnaire" component={Questionnaire} />
 
                   <Route component={NoMatch} />
                 </Switch>

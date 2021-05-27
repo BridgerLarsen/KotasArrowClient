@@ -3,37 +3,47 @@ import React from 'react';
 import Button from './buttons';
 
 function ContentImgDetails(props) {
+    const { 
+        className, 
+        img,
+        height, 
+        title, 
+        description, 
+        buttonHeader,
+        path 
+    } = props;
+
     return (
-        <div className={`${props.className}-content-wrapper`}>
+        <div className={`${className}-content-wrapper`}>
             <div 
-                className={`${props.className}-img`} 
+                className={`${className}-img`} 
                 style= {
                     {
-                        backgroundImage: `url(${props.img})`,
+                        backgroundImage: `url(${img})`,
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                         backgroundPosition: "center, center",
                         width: "100%",
-                        height: props.height
+                        height: height
                     }
                 }
                 alt="img"
             />
 
-            <div className={`${props.className}-details`}>
+            <div className={`${className}-details`}>
                 <div className="details-title">
-                    {props.title}
+                    {title}
                 </div>
 
                 <div className="details-description">
-                    {props.description}
+                    {description}
                 </div>
 
                 <div className="details-button">
                     <Button 
                         className="details"         
-                        path="/availability"
-                        buttonHeader={props.buttonHeader}
+                        path={path}
+                        buttonHeader={buttonHeader}
                     />
                 </div>
             </div>

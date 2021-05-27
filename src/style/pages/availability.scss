@@ -1,0 +1,22 @@
+.availability-details-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+
+    .details-content {
+        width: 1100px;
+        font-size: 18px;
+        font-family: $SourceSansPro;
+        color: $black;
+        line-height: 1.5em;
+
+        .details-text a {
+            text-decoration: none;
+            color: $lightgreen;
+        }
+
+        .details-availability {
+            margin-bottom: 15px;
+        }
+    }
+}

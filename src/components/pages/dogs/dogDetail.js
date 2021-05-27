@@ -11,8 +11,6 @@ class DogDetail extends Component {
         this.state = {
             dog: {}
         }
-
-        // imageRef = React.createRef();
     }
 
     renderDog() {
@@ -31,14 +29,6 @@ class DogDetail extends Component {
         this.renderDog();
     }
 
-    // renderLightbox(img) {
-    //     return (
-    //         <Lightbox
-                
-    //         />
-    //     )
-    // }
-
     render() {
         const {
             name,
@@ -52,20 +42,6 @@ class DogDetail extends Component {
         } = this.props.dog;
 
         const { weight, height } = dimensions;
-
-        // let { gridColumnEnd, gridRowEnd } = {
-        //     gridColumnEnd: '',
-        //     gridRowEnd: ''
-        // }
-
-        // function getMeta(url){   
-        //     var img = new Image();
-        //     img.addEventListener("load", function() {
-        //         gridColumnEnd = `span ${this.width}`;
-        //         gridRowEnd = `span ${this.height}`;
-        //     });
-        //     img.src = url;
-        // }
 
         return (
             <div className="dog-detail-wrapper">
@@ -97,7 +73,6 @@ class DogDetail extends Component {
                         <SRLWrapper>
                         <div className="images">
                             {images.map((img, index) => {
-                                    // getMeta(img.src);
                                     return (
                                         <img key={index} src={img.src} alt={img.id} />
                                     )
