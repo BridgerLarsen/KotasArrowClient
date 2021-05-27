@@ -49,7 +49,7 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:5000/api/dogs')
-        .then(response => {
+        .then(response => { 
             this.props.setDogsInfo(response.data.dogs)
         })
         .catch(err => {
@@ -64,25 +64,27 @@ class App extends Component {
           <ScrollToTop>
             <div>
               <Navigation />
+              
+              <div className="content-wrapper">
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/about-us" component={About} />
+                  <Route path="/customer-reviews" component={Reviews} />
 
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/about-us" component={About} />
-                <Route path="/customer-reviews" component={Reviews} />
+                  <Route exact path="/our-aussies" component={OurDogs} />
+                  <Route exact path="/our-aussies/males" component={Males} />
+                  <Route exact path="/our-aussies/females" component={Females} />
+                  <Route path="/our-aussies/males/:slug" component={DogDetail} />
+                  <Route path="/our-aussies/females/:slug" component={DogDetail} />
 
-                <Route exact path="/our-aussies" component={OurDogs} />
-                <Route exact path="/our-aussies/males" component={Males} />
-                <Route exact path="/our-aussies/females" component={Females} />
-                <Route path="/our-aussies/males/:slug" component={DogDetail} />
-                <Route path="/our-aussies/females/:slug" component={DogDetail} />
+                  <Route path="/availability" component={Availability} />
+                  <Route path="/contact-us" component={Contact} />
 
-                <Route path="/availability" component={Availability} />
-                <Route path="/contact-us" component={Contact} />
+                  <Route path="/faq" component={FAQ} />
 
-                <Route path="/faq" component={FAQ} />
-
-                <Route component={NoMatch} />
-              </Switch>
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
 
               <Footer />
             </div>

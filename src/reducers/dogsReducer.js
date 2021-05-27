@@ -1,9 +1,11 @@
 import { 
-    SET_DOGS_INFO
+    SET_DOGS_INFO,
+    SET_DOG_INFO
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    dogs: []
+    dogs: [],
+    dog: {}
 }
 
 export default function(state = INITIAL_STATE, action) {
@@ -13,6 +15,12 @@ export default function(state = INITIAL_STATE, action) {
                 ...state,
                 dogs: action.payload
             })
-            default: return state;
+
+        case SET_DOG_INFO:
+            return({
+                ...state,
+                dog: action.payload
+            })
+        default: return state;
     }
 }

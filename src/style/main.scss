@@ -11,6 +11,10 @@ html {
     position: relative;
 }
 
+.content-wrapper {
+    min-height: 448px
+}
+
 
 
 @import "./variables.scss";
@@ -23,6 +27,7 @@ html {
 @import "./pages/about.scss";
 @import "./pages/review.scss";
 @import "./footer.scss";
+@import "./pages/dogDetail.scss";
 @import "./pages/noMatch.scss";
 
 @import "./headerImage.scss"; 

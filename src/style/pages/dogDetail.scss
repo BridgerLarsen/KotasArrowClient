@@ -1,0 +1,70 @@
+.dog-detail-wrapper {
+    .detail-heading-wrapper {
+        height: 290px;
+        background-color: $gray;
+        font-family: $LibreFont;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .dog-name {
+            color: $white;
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: 60px;
+            margin-bottom: 0;
+        }
+
+        .breeding-name {
+            font-size: 19px;
+            color: $lightgreen;
+            font-weight: 500;
+        }
+    }
+
+    .detail-information-wrapper {
+        display: grid;
+        grid-template-columns: 440px 440px;
+        width: 100%;
+        padding: 60px 0;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
+
+        .information-image {
+            width: 440px;
+            height: 440px;
+        }
+
+        .information-data {
+            font-size: 16px;
+            color: $black;
+            text-align: center;
+            font-family: $SourceSansPro;
+            line-height: 1.5em;
+        }
+    }
+
+    .detail-image-gallery-wrapper {
+        display: grid;
+        grid-template-columns: minmax(265px, 1200px);
+        justify-content: center;
+        background-color: $gray;
+        padding: 70px 0;
+
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+            grid-template-rows: repeat(auto-fit, 440px);
+            justify-items: center;
+            align-items: center;
+
+            img {
+                width: 265px;
+                border-radius: 10px;
+            }
+        }
+    }    
+}
+

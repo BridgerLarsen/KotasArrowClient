@@ -1,7 +1,9 @@
 import { 
-    setDogsInfo 
+    setDogsInfo,
+    setDogInfo 
 } from './dogs';
 
 export {
-    setDogsInfo
+    setDogsInfo,
+    setDogInfo
 }; 
