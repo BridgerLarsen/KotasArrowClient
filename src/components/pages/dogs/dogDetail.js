@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { SRLWrapper } from "simple-react-lightbox";
 
 import * as actions from '../../../actions';
 
@@ -29,6 +30,14 @@ class DogDetail extends Component {
     componentDidUpdate() {
         this.renderDog();
     }
+
+    // renderLightbox(img) {
+    //     return (
+    //         <Lightbox
+                
+    //         />
+    //     )
+    // }
 
     render() {
         const {
@@ -85,14 +94,16 @@ class DogDetail extends Component {
 
                 {images ? 
                     <div  className="detail-image-gallery-wrapper">
-                        <div className="images"> 
-                                {images.map((img, index) => {
+                        <SRLWrapper>
+                        <div className="images">
+                            {images.map((img, index) => {
                                     // getMeta(img.src);
                                     return (
-                                        <img key={index} src={img.src} />
+                                        <img key={index} src={img.src} alt={img.id} />
                                     )
                                 })}
                         </div>
+                        </SRLWrapper>                      
                     </div>
                     : 
                     null
