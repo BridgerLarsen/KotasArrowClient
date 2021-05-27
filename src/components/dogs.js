@@ -43,7 +43,7 @@ class Dogs extends Component {
                 <div className="dogs-wrapper">
                     {this.props.home ? 
                         <div className="heading">
-                            <h2>Our Kotas Arrow Aussies</h2>
+                            <h2>Our Aussies</h2>
                         </div>
                         : null
                     }
