@@ -23,7 +23,7 @@ import Females from './pages/dogs/females';
 import DogDetail from './pages/dogs/dogDetail'; 
 import Availability from './pages/availability';
 import Contact from './pages/contact';
-import FAQ from './pages/faq';
+import FAQ from './pages/faq/faq';
 import Questionnaire from './pages/questionnaire';
 import NoMatch from './pages/noMatch';
 

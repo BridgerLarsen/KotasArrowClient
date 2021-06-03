@@ -1,9 +1,14 @@
 import { 
     setDogsInfo,
-    setDogInfo 
+    setDogInfo
 } from './dogs';
+
+import {
+    setFaqData
+} from './faq';
 
 export {
     setDogsInfo,
-    setDogInfo
+    setDogInfo,
+    setFaqData
 }; 
