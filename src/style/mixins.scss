@@ -1,3 +1,17 @@
 @mixin headerimgOverlay {
     
 }
+
+@mixin detailsText {
+    width: 1100px;
+    font-size: 18px;
+    font-family: $SourceSansPro;
+    color: $black;
+    line-height: 1.5em;
+}
+
+@mixin textDetailsSetup {
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+}

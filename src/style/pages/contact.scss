@@ -1,0 +1,30 @@
+.contact-information-wrapper {
+    display: grid;
+    grid-template-columns: 560px 560px;
+    justify-content: center;
+    align-items: center;
+    padding: 70px;
+
+    .left-column {
+        font-size: 19px;
+        font-family: "Open Sans", sans-serif;
+        color: $black;
+
+        .information-name {
+            font-size: 24px;
+            color: $green;
+        }
+    }
+
+    .right-column {
+        font-size: 1.8em;
+        color: $black;
+        font-family: $SourceSansPro;
+
+        .contact-faq-link {
+            color: #ff0000;
+            text-decoration: none;
+        }
+    }
+
+}
