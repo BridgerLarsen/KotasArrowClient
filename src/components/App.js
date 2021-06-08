@@ -6,7 +6,9 @@ import {
   faSortDown, 
   faChevronRight, 
   faChevronLeft, 
-  faCaretRight
+  faCaretRight,
+  faPlus,
+  faMinus
 } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -40,7 +42,9 @@ library.add(
   faCopyright,
   faChevronRight,
   faChevronLeft,
-  faCaretRight
+  faCaretRight,
+  faPlus,
+  faMinus
 );
 
 class App extends Component {

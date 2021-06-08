@@ -5,9 +5,27 @@ import axios from 'axios';
 import * as actions from '../../../actions';
 
 import HeaderImage from '../../headerImage';
-import FaqDetail from './faqDetail';
+import FaqDetails from './faqDetail';
 
 class FAQ extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            types: [
+                "Contacting Us",
+                "Purchasing a Puppy"
+            ],
+            subTypes: [
+                "Application",
+                "Deposit",
+                "Choosing Your Puppy",
+                "Final Payment",
+                "Recieving Your Aussie"
+            ],
+            subTypeCategory: []
+        }
+    }
 
     componentDidMount() {
         axios.get('http://localhost:5000/api/faqs')
@@ -16,6 +34,14 @@ class FAQ extends Component {
         })
         .catch(err => {
             console.log("Error with faq get request", err);
+        })
+
+        this.props.faqData.map((faq, index) => {
+            if (faq.subType) {
+                this.setState({
+                    subTypeCategory: faq.type
+                })
+            }
         })
     }
 
@@ -30,15 +56,25 @@ class FAQ extends Component {
                 />
 
                 <div className="faqs-wrapper">
-                    <h1 className="faqs-heading">Answers to Commonly Asked Questions</h1>
+                    <div className="faqs-content">
+                        <h2 className="faqs-heading">Frequently Asked Questions</h2>
 
-                    <FaqDetail />
+                        <div className="faqs">
+                            <FaqDetails />
+                        </div>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-FAQ = connect(null, actions)(FAQ);
+const mapStatetoProps = (state) => {
+    return {
+        faqData: state.faq.faqData
+    }
+}
+
+FAQ = connect(mapStatetoProps, actions)(FAQ);
 
 export default FAQ;
