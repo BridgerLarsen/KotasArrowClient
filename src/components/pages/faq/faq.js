@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as actions from '../../../actions';
 
 import HeaderImage from '../../headerImage';
-import FaqDetails from './faqDetail';
+import FaqDetails from './faqDetails';
 
 class FAQ extends Component {
     constructor(props) {
@@ -31,18 +31,25 @@ class FAQ extends Component {
         axios.get('http://localhost:5000/api/faqs')
         .then(res => {
             this.props.setFaqData(res.data.faqs);
+            res.data.faqs.map((faq, index) => {
+                if (faq.subType) {
+                    this.setState({
+                        subTypeCategory: faq.type
+                    })
+                }
+            })
         })
         .catch(err => {
             console.log("Error with faq get request", err);
         })
 
-        this.props.faqData.map((faq, index) => {
-            if (faq.subType) {
-                this.setState({
-                    subTypeCategory: faq.type
-                })
-            }
-        })
+        // this.props.faqData.map((faq, index) => {
+        //     if (faq.subType) {
+        //         this.setState({
+        //             subTypeCategory: faq.type
+        //         })
+        //     }
+        // })
     }
 
     render() {
@@ -60,7 +67,11 @@ class FAQ extends Component {
                         <h2 className="faqs-heading">Frequently Asked Questions</h2>
 
                         <div className="faqs">
-                            <FaqDetails />
+                            <FaqDetails 
+                                types={this.state.types} 
+                                subTypes={this.state.subTypes}
+                                subTypeCategory={this.state.subTypeCategory}
+                            />
                         </div>
                     </div>
                 </div>

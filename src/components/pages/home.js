@@ -5,6 +5,8 @@ import ContentImgDetails from '../contentImgDetails';
 import Button from '../buttons';
 import Dogs from '../dogs';
 
+import headerImage from '../../static/assests/images/puppies.jpg'
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +16,7 @@ class Home extends Component {
         return (
             <div className="homepage-wrapper">
                 <HeaderImage 
-                    img={"https://greenvalleyaussies.com/assets/uploads/snow-puppies-australian-shepherds-2.jpg"} 
+                    img={headerImage} 
                     className="homepage-img" 
                     height="874px"
                     logo={"https://greenvalleyaussies.com/assets/uploads/2020/01/logo-white-shadow.png"}
@@ -60,7 +62,7 @@ class Home extends Component {
                             </div>
 
                             <p className="about-description">
-                                Green Valley Australian Shepherds is owned and operated by Jeff and Emily Mabey. Our dogs enjoy a pleasant, fun-filled life near Salt Lake City by the 4 – Generation Mabey Farm in South Jordan. Between our home, Jeff’s Family Farm and Emily’s Family Ranch our dogs have ample room to run for lots of fun and adventures!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptas ut perferendis. Dignissimos amet beatae perspiciatis est labore, ratione dolor rem ut hic ipsa delectus quaerat voluptates quam sint architecto minus sunt velit dolorum et animi. Velit cupiditate non harum recusandae. Maxime velit odio reiciendis, cupiditate veritatis dignissimos repellat quasi ipsam vel. Dolor modi exercitationem deleniti et!
                             </p>
 
                             <Button 
