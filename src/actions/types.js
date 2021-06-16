@@ -1,6 +1,12 @@
 export const SET_DOGS_INFO = 'SET_DOGS_INFO';
 export const SET_DOG_INFO = 'SET_DOG-INFO';
 export const SET_FAQ_DATA = 'SET_FAQ_DATA';
-export const SET_FAQ_TYPES = 'SET_FAQ_TYPES';
-export const SET_FAQ_SUBTYPES = 'SET_FAQ_SUBTYPES';
-export const SET_FAQ_SUB_TYPE_CATEGORY = 'SET_FAQ_SUB_TYPE_CATEGORY';  
+export const USER_LOADING = "IS_LOADING";
+export const USER_LOADED = "USER_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const TOKEN_EXISTS = 'TOKEN_EXISTS';
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+// export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+// export const REGISTER_FAIL = "REGISTER_FAIL";

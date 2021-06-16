@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import axios from 'axios';
+
+import * as actions from '../actions';
 
 class Dogs extends Component {
-    constructor(props) {
-        super(props);
-    }
+    componentDidMount() {
+        axios.get('http://localhost:5000/api/dogs')
+            .then(response => { 
+                this.props.setDogsInfo(response.data.dogs)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+      }
 
     renderDogs(dogs, page) {
         return dogs.map(dog => {
@@ -16,7 +25,7 @@ class Dogs extends Component {
                         className="dog" 
                         key={dog._id}
                     >
-                        <img src={dog.imgProfileUrl} />
+                        <img alt={dog.name} src={dog.imgProfileUrl} />
     
                         <h1 className="dog-name">{dog.name}</h1>
                     </NavLink>
@@ -28,7 +37,7 @@ class Dogs extends Component {
                         className="dog" 
                         key={dog._id}
                     >
-                        <img src={dog.imgProfileUrl} />
+                        <img alt={dog.name} src={dog.imgProfileUrl} />
     
                         <h1 className="dog-name">{dog.name}</h1>
                     </NavLink>
@@ -66,6 +75,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-Dogs = connect(mapStateToProps, null)(Dogs);
+Dogs = connect(mapStateToProps, actions)(Dogs);
 
 export default Dogs;

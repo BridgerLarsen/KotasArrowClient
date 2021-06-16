@@ -1,22 +1,3 @@
-body {
-    margin: 0;
-}
-
-html {
-    font-size: 62.5%; // 1rem is 10px
-}
-
-.container {
-    display: grid;
-    position: relative;
-}
-
-.content-wrapper {
-    min-height: 448px
-}
-
-
-
 @import "./variables.scss";
 @import "./mixins.scss";
 
@@ -32,9 +13,28 @@ html {
 @import "./pages/contact.scss";
 @import "./pages/faq.scss";
 @import "./pages/questionnaire.scss";
+@import "./pages/auth.scss";
 
 @import "./headerImage.scss"; 
 @import "./contentImgDetails.scss";
 @import "./footer.scss";
 @import "./buttons.scss";
 @import "./dogs.scss";
+
+body {
+    margin: 0;
+    font-family: $LibreFont;
+}
+
+html {
+    font-size: 62.5%; // 1rem is 10px
+}
+
+.container {
+    display: grid;
+    position: relative;
+}
+
+.content-wrapper {
+    min-height: 448px
+}

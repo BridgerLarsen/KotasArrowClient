@@ -4,19 +4,17 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import SimpleReactLightbox from 'simple-react-lightbox';
+import thunk from 'redux-thunk';
 
 import "./style/main.scss"
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(compose((window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null)(createStore)));
+const createStoreWithMiddleware = applyMiddleware(thunk)(compose((window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null)(createStore)));
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
       <React.StrictMode>
-        <SimpleReactLightbox>
           <App />
-        </SimpleReactLightbox>
     </React.StrictMode>
   </Provider>,
   document.getElementById('app-wrapper')

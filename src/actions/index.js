@@ -7,8 +7,19 @@ import {
     setFaqData
 } from './faq';
 
+import {
+    login,
+    logout,
+    getToken,
+    loadUser
+} from './auth';
+
 export {
     setDogsInfo,
     setDogInfo,
-    setFaqData
+    setFaqData,
+    login,
+    logout,
+    getToken,
+    loadUser
 }; 
