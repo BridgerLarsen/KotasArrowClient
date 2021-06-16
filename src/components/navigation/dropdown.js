@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 
 function DogDropDown(props) {
-     const dogs = props.dogs.map((dogs, index) => {
+    const dogs = props.dogs.map((dogs, index) => {
         if (dogs.gender.toLowerCase() === props.gender) {
             return (
                 <NavLink key={index} to={`/our-aussies/${dogs.gender.toLowerCase()}s/${dogs.name.toLowerCase()}`}>

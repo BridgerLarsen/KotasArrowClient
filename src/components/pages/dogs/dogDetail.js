@@ -16,7 +16,7 @@ class DogDetail extends Component {
     renderDog() {
         return this.props.dogs.map(dog => {
             if (dog.name.toLowerCase() === this.props.match.params.slug) {
-                this.props.setDogInfo(dog);
+                return this.props.setDogInfo(dog);
             } else return null;
        })
     }
@@ -52,7 +52,7 @@ class DogDetail extends Component {
                 </div>
 
                 <div className="detail-information-wrapper">
-                    <img className="information-image" src={imgProfileUrl} />
+                    <img alt={name} className="information-image" src={imgProfileUrl} />
 
                     <p className="information-data">
                         Date of Birth: {dateOfBirth}

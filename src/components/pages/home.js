@@ -8,10 +8,6 @@ import Dogs from '../dogs';
 import headerImage from '../../static/assests/images/puppies.jpg'
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className="homepage-wrapper">

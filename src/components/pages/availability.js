@@ -61,7 +61,7 @@ class Availability extends Component {
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sapiente fugit ad illo delectus repellendus!</p>
 
-                        <img className="purchase-detail-img" src="http://via.placeholder.com/480x720" />
+                        <img alt="availabiltiy" className="purchase-detail-img" src="http://via.placeholder.com/480x720" />
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sequi culpa veniam debitis minus facere fugit maxime sed vel! Inventore similique natus officiis aperiam.</p>
 

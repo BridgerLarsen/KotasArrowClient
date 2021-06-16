@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../buttons';
 
-export default function() {
+export default function NoMatch() {
     return (
         <div className="no-match-page-wrapper">
             <div className="left-side">
@@ -22,7 +22,7 @@ export default function() {
             </div>
 
             <div className="right-side">
-                <img src="http://via.placeholder.com/1000x1000" />
+                <img alt="no match" src="http://via.placeholder.com/1000x1000" />
             </div>
         </div>
     )
