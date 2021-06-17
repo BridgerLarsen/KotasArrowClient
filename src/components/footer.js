@@ -6,17 +6,17 @@ class Footer extends Component {
         return (
             <div className="footer-wrapper">
                     <div className="footer-icons">
-                        <div className="icon-youtube">
+                        <a target="_blank" href="" className="icon-youtube">
                             <FontAwesomeIcon icon={['fab', 'youtube']} />
-                        </div>
+                        </a>
 
-                        <div className="icon-instagram">
+                        <a target="_blank" href="" className="icon-instagram">
                             <FontAwesomeIcon icon={['fab', 'instagram']} />
-                        </div>
+                        </a>
 
-                        <div className="icon-facebook">
+                        <a target="_blank" href="" className="icon-facebook">
                             <FontAwesomeIcon icon={['fab', 'facebook']} />
-                        </div>
+                        </a>
                     </div>
 
                 <div className="footer-company-name">

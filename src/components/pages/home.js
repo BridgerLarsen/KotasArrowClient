@@ -58,7 +58,7 @@ class Home extends Component {
                             </div>
 
                             <p className="about-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptas ut perferendis. Dignissimos amet beatae perspiciatis est labore, ratione dolor rem ut hic ipsa delectus quaerat voluptates quam sint architecto minus sunt velit dolorum et animi. Velit cupiditate non harum recusandae. Maxime velit odio reiciendis, cupiditate veritatis dignissimos repellat quasi ipsam vel. Dolor modi exercitationem deleniti et!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit voluptas ut perferendis. Dignissimos amet beatae perspiciatis est labore, ratione dolor rem ut hic ipsa delectus quaerat voluptates quam sint architecto minus sunt velit dolorum et animi. Velit cupiditate non harum recusandae. Maxime velit odio reiciendis, cupiditate veritatis dignissimos repellat quasi ipsam vel. Dolor modi exercitationem deleniti et!
                             </p>
 
                             <Button 

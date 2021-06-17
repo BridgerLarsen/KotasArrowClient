@@ -23,11 +23,11 @@ class Availability extends Component {
 
                         <p className="details-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores repellendus natus minima amet distinctio a animi, eum porro reiciendis, quae dolor modi perferendis nostrum sint praesentium inventore consectetur, laudantium corrupti dicta. Provident cupiditate doloribus sapiente neque eum.</p>
 
-                        <p className="details-text">
+                        <span className="details-text">
                             Please <NavLink to="/questionnaire">fill out a questionnaire</NavLink> for more information about getting on our waiting list. 
                             similique id harum esse, commodi nulla repudiandae quidem nobis, numquam delectus voluptate 
                             optio. Ut natus placeat doloribus.
-                        </p>
+                        </span>
 
                         <div className="details-availability">2022 Waiting List: Open</div>
 
@@ -81,7 +81,7 @@ class Availability extends Component {
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos nemo debitis blanditiis? Dolorem laudantium ipsum facilis modi cum, magnam nihil. Inventore, fugiat. Iusto, possimus dolor veniam labore nam impedit totam amet veritatis nostrum consequatur tenetur! Impedit esse iure provident temporibus! Labore ea veritatis maiores totam dolore minima reiciendis quod, asperiores commodi magnam magni temporibus beatae perferendis explicabo corrupti.</p>
 
-                        <p className="purchase-detail-points">
+                        <span className="purchase-detail-points">
                             <h3 className="detail-heading">All Aussies come with:</h3>
 
                             <div className="detail-points">
@@ -114,7 +114,7 @@ class Availability extends Component {
                                     <li>And much more</li>
                                 </ul>
                             </div>
-                        </p>
+                        </span>
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid esse voluptas architecto doloribus earum nobis quidem voluptate explicabo eius incidunt temporibus possimus id ex, distinctio, eaque quibusdam cumque, maxime corrupti.</p>
 
