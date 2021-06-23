@@ -27,6 +27,11 @@
 body {
     margin: 0;
     font-family: $LibreFont;
+
+    ::-webkit-scrollbar {
+        width: 12px;
+        // background-color: black;
+    }
 }
 
 html {
