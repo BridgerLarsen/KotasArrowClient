@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ class Dogs extends Component {
         return dogs.map(dog => {
             if (page && `${dog.gender.toLowerCase()}s` === page) {
                 return (
-                    <NavLink 
+                    <Link 
                         to={`/our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`} 
                         className="dog" 
                         key={dog._id}
@@ -28,11 +28,11 @@ class Dogs extends Component {
                         <img alt={dog.name} src={dog.imgProfileUrl} />
     
                         <h1 className="dog-name">{dog.name}</h1>
-                    </NavLink>
+                    </Link>
                 )
             } else if (!page) {
                 return (
-                    <NavLink 
+                    <Link 
                         to={`/our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`} 
                         className="dog" 
                         key={dog._id}
@@ -40,7 +40,7 @@ class Dogs extends Component {
                         <img alt={dog.name} src={dog.imgProfileUrl} />
     
                         <h1 className="dog-name">{dog.name}</h1>
-                    </NavLink>
+                    </Link>
                 )
             }
         })

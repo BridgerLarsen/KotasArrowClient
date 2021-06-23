@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import HeaderImage from '../headerImage';
 
@@ -36,12 +36,12 @@ class Contact extends Component {
                     <div className="right-column">
                         <p className="contact-detail">To Learn more about our dogs, please contact us!</p>
 
-                        <NavLink 
+                        <Link 
                             to="/faq" 
                             className="contact-faq-link"
                         >
                             Please check our FAQ page for answers to commonly asked questions.
-                        </NavLink>
+                        </Link>
                     </div>
                 </div>
             </div>

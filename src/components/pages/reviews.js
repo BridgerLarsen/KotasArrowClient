@@ -71,16 +71,14 @@ class Reviews extends Component {
                     <div className="review-wrapper">
                         {this.state.reviews.map((review, index) => {
                             return (
-                                <div className="slide" key={index}>
-                                    {this.state.currentReview === index ? (
+                                this.state.currentReview === index ? (
+                                    <div className="slide" key={index}>
                                         <div className="review">
                                             <p>{review.review}</p>
                                             <h2>{review.name.toUpperCase()}</h2>
                                         </div>
-                                    ) 
-                                    : null
-                                    }
-                                </div>
+                                    </div>
+                                ) : null
                             )
                         })}
                     </div>

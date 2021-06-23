@@ -10,7 +10,7 @@ import {
 import {
     login,
     logout,
-    getToken,
+    // getToken,
     loadUser
 } from './auth';
 
@@ -20,6 +20,6 @@ export {
     setFaqData,
     login,
     logout,
-    getToken,
+    // getToken,
     loadUser
 }; 

@@ -11,9 +11,33 @@ import {
     // REGISTER_FAIL
 } from './types';
 
-export const getToken = () => {
-    return function(dispatch) {
-        axios.get('http://localhost:5000/api/auth/logged_in', 
+// export const getToken = () => {
+//     return function(dispatch) {
+//         axios.get('http://localhost:5000/api/auth/logged_in', 
+//         { withCredentials: true })    
+//         .then(res => {
+//             if (res.data.token) {
+//                 dispatch({
+//                     type: TOKEN_EXISTS,
+//                     payload: `${res.data.token}` 
+//                 })
+//             } else {
+//                 dispatch({
+//                     type: TOKEN_EXISTS,
+//                     payload: null
+//                 })
+//             }
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+//     }
+// }
+
+// Check token & load user
+export const loadUser = () => {
+    return async function(dispatch, getState) {
+        await axios.get('http://localhost:5000/api/auth/logged_in', 
         { withCredentials: true })    
         .then(res => {
             if (res.data.token) {
@@ -31,16 +55,11 @@ export const getToken = () => {
         .catch(err => {
             console.log(err);
         })
-    }
-}
 
-// Check token & load user
-export const loadUser = () => {
-    return function(dispatch, getState) {
         // User loading
         dispatch({ type: USER_LOADING });
     
-        axios
+        await axios
         .get('http://localhost:5000/api/auth/users', 
         headerConfig(getState),
         { withCredentials: true })
@@ -85,9 +104,20 @@ export const login = ( email, password ) => {
 }
 
 export const logout = () => {
-    return {
-      type: LOGOUT_SUCCESS
-    };
+    return function(dispatch) {
+        axios.delete('http://localhost:5000/api/auth/loggout', 
+        { withCredentials: true })
+        .then(res => {
+            if (res.data.loggedOut === "Success") {
+                dispatch({
+                    type: LOGOUT_SUCCESS
+                })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
   };    
 
 

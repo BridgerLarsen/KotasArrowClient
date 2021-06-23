@@ -14,7 +14,7 @@ class DogDetail extends Component {
     }
 
     renderDog() {
-        return this.props.dogs.map(dog => {
+        this.props.dogs.map(dog => {
             if (dog.name.toLowerCase() === this.props.match.params.slug) {
                 return this.props.setDogInfo(dog);
             } else return null;
@@ -35,9 +35,9 @@ class DogDetail extends Component {
             breedingName,
             color,
             dateOfBirth,
-            dimensions={},
+            dimensions = {},
             gender,
-            images,
+            images = [],
             imgProfileUrl
         } = this.props.dog;
 
@@ -68,20 +68,19 @@ class DogDetail extends Component {
                     </p>
                 </div>
 
-                {images ? 
-                    <div  className="detail-image-gallery-wrapper">
+                {images.length > 0 ? (
+                    <div className="detail-image-gallery-wrapper">
                         <SRLWrapper>
-                        <div className="images">
-                            {images.map((img, index) => {
-                                    return (
-                                        <img key={index} src={img.src} alt={img.id} />
-                                    )
-                                })}
-                        </div>
+                            <div className="images">
+                                {images.map((img, index) => {
+                                        return (
+                                            <img key={index} src={img.src} alt={img.id} />
+                                        )
+                                    })}
+                            </div>
                         </SRLWrapper>                      
                     </div>
-                    : 
-                    null
+                ) : null
                 }
             </div>
         )

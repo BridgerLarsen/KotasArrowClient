@@ -1,0 +1,28 @@
+.manager-side-bar-list-wrapper {
+    .manager-list-container {
+        padding: 21px;
+
+        .list-thumb {
+            // border: 1px solid $lightgreen;
+            // border-radius: 5px;
+            p {
+                font-size: 18px;
+                text-align: center;
+                @include managerSideBarStyles();
+            }
+        }
+
+        .list-name {
+            font-size: 25px;
+            @include managerSideBarStyles();
+        }
+    }
+
+    .side-bar-list-title {
+        font-size: 2.5em;
+        font-family: $LibreFont;
+        color: $white;
+        text-align: center;
+        margin-top: 40px;
+    }
+}

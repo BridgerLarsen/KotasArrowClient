@@ -9,7 +9,8 @@ import {
   faPlus,
   faMinus,
   faEnvelope,
-  faLock
+  faLock,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -30,6 +31,10 @@ import Auth from './pages/auth';
 import NoMatch from './pages/noMatch';
 import Navigation from './navigation/navigation';
 import Footer from './footer';
+import SiteManager from './pages/siteManager/siteManager';
+// import ReviewsManager from './pages/siteManager/reviewsManager';
+// import DogsManager from './pages/siteManager/dogsManager';
+// import FaqsManager from './pages/siteManager/faqsManager';
 
 import * as actions from '../actions';
 import ScrollToTop from '../helpers/scrollToTop';
@@ -46,18 +51,22 @@ library.add(
   faPlus,
   faMinus,
   faEnvelope,
-  faLock
+  faLock,
+  faSignOutAlt
 );
 
 class App extends Component {
   componentDidMount() {
-    this.props.getToken();
+      this.props.loadUser();
+  }
 
-    setTimeout(() => {
-      if (!this.props.isAuthenticated && this.props.token) {
-        this.props.loadUser();
-      }
-    }, 1000);
+  authorizedPages() {
+    return [
+      <Route key="site-manager" path="/site-manager" component={SiteManager} />
+      // <Route key="review-manager" path="/site-manager/reviews" component={ReviewsManager} />,
+      // <Route key="dog-manager" path="/site-manager/dogs" component={DogsManager} />,
+      // <Route key="faq-manager" path="/site-manager/faqs" component={FaqsManager} />   
+    ];
   }
   render(){
     return (
@@ -86,13 +95,16 @@ class App extends Component {
 
                   <Route path="/questionnaire" component={Questionnaire} />
 
+                  {this.props.isAuthenticated ? (
+                    this.authorizedPages()
+                  ) : null
+                  }
+
                   <Route 
                     path="/auth" 
                     render={props => (
                       <Auth
                         {...props}
-                        // handleSuccessfullLogin={this.handleSuccessfullLogin}
-                        // handleUnSuccessfullLogin={this.handleUnSuccessfullLogin}
                       />
                     )}
                   />

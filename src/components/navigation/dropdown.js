@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 
@@ -7,9 +7,9 @@ function DogDropDown(props) {
     const dogs = props.dogs.map((dogs, index) => {
         if (dogs.gender.toLowerCase() === props.gender) {
             return (
-                <NavLink key={index} to={`/our-aussies/${dogs.gender.toLowerCase()}s/${dogs.name.toLowerCase()}`}>
+                <Link key={index} to={`/our-aussies/${dogs.gender.toLowerCase()}s/${dogs.name.toLowerCase()}`}>
                     {dogs.name}
-                </NavLink>
+                </Link>
             )
         }
     })
@@ -68,9 +68,9 @@ class DropDown extends Component {
                     onMouseEnter={this.maleMouseEnter}
                     onMouseLeave={this.maleMouseLeave}
                 >
-                    <NavLink to="/our-aussies/males">
+                    <Link to="/our-aussies/males">
                         Males <FontAwesomeIcon icon="caret-right" />
-                    </NavLink>
+                    </Link>
 
                     {this.state.maleDropdown ? 
                         <DogDropDown dogs={this.props.dogs} gender="male" />
@@ -83,9 +83,9 @@ class DropDown extends Component {
                     onMouseEnter={this.femaleMouseEnter}
                     onMouseLeave={this.femaleMouseLeave}
                 >
-                    <NavLink to="/our-aussies/females">
+                    <Link to="/our-aussies/females">
                         Females <FontAwesomeIcon icon="caret-right" />
-                    </NavLink>
+                    </Link>
 
                     {this.state.femaleDropdown ? 
                         <DogDropDown dogs={this.props.dogs} gender="female" />

@@ -1,0 +1,79 @@
+.site-manager-wrapper {
+    .manager-links-wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 70px;
+
+        .manager-link {
+            div {
+                color: $green;
+                font-size: 2em;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .active {
+                border-bottom: 2px solid $cbd;
+            }
+        }
+    }
+
+    .manager-forms-wrapper {
+        height: 100%;
+        // calc(100vh - 423px)
+    }
+
+    .form-button-wrapper {
+        .btn {
+            padding: 17px;
+            background-color: $lightgreen;
+            letter-spacing: 1.5px;
+            font-size: 16px;
+            color: $white;
+            border-radius: 50px;
+            font-family: $SourceSansPro;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}
+
+.manager-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 546px;
+
+    .left-column {
+        padding: 40px;
+        background-color: $offWhite;
+    }
+
+    .right-column {
+        background-color: $gray;
+    }
+
+    .reviews-form-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 31px;
+
+        .form-input {
+            @include inputElement();
+        }
+
+        .reviews-form-review {
+            height: 100px;
+            padding: 10px;
+            border: 1px solid $lightgreen;
+        }
+    }
+
+    .form-title {
+        margin: 0px 0px 40px 0px;
+        font-size: 2.8em;
+    }
+}
+
+
