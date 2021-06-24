@@ -10,9 +10,10 @@ import {
   faMinus,
   faEnvelope,
   faLock,
-  faSignOutAlt
+  faSignOutAlt,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons';
-import { faCopyright } from '@fortawesome/free-regular-svg-icons';
+import { faCopyright, faEdit } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -52,7 +53,9 @@ library.add(
   faMinus,
   faEnvelope,
   faLock,
-  faSignOutAlt
+  faSignOutAlt,
+  faEdit,
+  faTrash
 );
 
 class App extends Component {

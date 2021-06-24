@@ -10,7 +10,10 @@ class ReviewsManagerForm extends Component {
 
         this.state = {
             name: "",
-            review: ""
+            review: "",
+            editMode: false,
+            apiAction: "post",
+            apiUrl: "http://localhost:5000/api/reviews/add"
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,26 +26,70 @@ class ReviewsManagerForm extends Component {
         })
     }
 
+    componentDidUpdate() {
+        if (Object.keys(this.props.reviewToEdit).length > 0) {
+            const {
+                name,
+                review,
+                _id
+            } = this.props.reviewToEdit;
+
+            this.props.clearReviewToEdit();
+
+            this.setState({
+                name: name || "",
+                review: review || "",
+                editMode: true,
+                apiAction: 'patch',
+                apiUrl: `http://localhost:5000/api/reviews/update/${_id}`
+            })
+        }
+    }
+
+    // post('http://localhost:5000/api/reviews/add',
+    //     {
+    //         name: this.state.name,
+    //         review: this.state.review
+    //     },
+    //     options,
+    //     { withCredentials: true })
+
     handleSubmit(event) {
-        const options = {
+        // const options = {
+        //     headers: {
+        //         'x-auth-token': this.props.token
+        //     }
+        // }
+
+        axios({
+            method: this.state.apiAction,
+            url: this.state.apiUrl,
+            data: {
+                name: this.state.name,
+                review: this.state.review
+            },
             headers: {
                 'x-auth-token': this.props.token
-            }
-        }
-
-        axios.post('http://localhost:5000/api/reviews/add',
-        {
-            name: this.state.name,
-            review: this.state.review
-        },
-        options,
-        { withCredentials: true }
-        )
+            },
+            withCredentials: true
+        })
         .then(res => {
-            console.log(res.data)
+            if (this.state.editMode) {
+                this.props.getData();
+            } else {
+                this.props.handleNewFormSubmission(res.data)
+            }
+
+            this.setState({
+                name: "",
+                review: "",
+                editMode: false,
+                apiAction: "post",
+                apiUrl: "http://localhost:5000/api/reviews/add"
+            })
         })
         .catch(err => {
-            console.log("Review Mangager handle submit error:", err.response.data)
+            console.log("Review Mangager handle submit error:", err)
         })
 
         event.preventDefault();

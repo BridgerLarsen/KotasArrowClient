@@ -40,9 +40,9 @@
 }
 
 .manager-wrapper {
-    height: 100%;
+    // height: 100%;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2.5fr 1fr;
     height: 546px;
 
     .left-column {
@@ -65,10 +65,6 @@
         grid-template-columns: 1fr;
         row-gap: 31px;
 
-        .form-input {
-            @include inputElement();
-        }
-
         .reviews-form-review {
             height: 100px;
             padding: 10px;
@@ -76,10 +72,39 @@
         }
     }
 
+    .form-input {
+        @include inputElement();
+    }
+
+    .dogs-form-wrapper {
+        display: grid;
+        row-gap: 31px;
+
+        .dogs-form-gender-select {
+            color: $gray;
+            border: 1px solid $lightgreen;
+            background-color: transparent;
+            outline: none;
+            padding: 0px 5px;
+            font-size: 22px;
+            font-family: $SourceSansPro;
+        }
+    }
+
     .form-title {
         margin: 0px 0px 40px 0px;
         font-size: 2.8em;
     }
+}
+
+.two-column {
+    @include base-grid();
+    grid-template-columns: 1fr 1fr;
+}
+
+.one-column {
+    @include base-grid();
+    grid-template-columns: 1fr;
 }
 
 

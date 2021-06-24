@@ -46,3 +46,8 @@
     font-family: $SourceSansPro;
     color: $white;
 }
+
+@mixin base-grid {
+    display: grid;
+    grid-gap: 21px;
+}

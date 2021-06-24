@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 import * as actions from '../../actions';
 import DropDown from './dropdown';
@@ -28,6 +29,11 @@ class Navigation extends Component {
         this.setState({
             dropdown: false
         })
+    }
+
+    handleLogout() {
+        this.props.logout()
+        this.props.history.push('/');
     }
 
     render() {
@@ -100,7 +106,7 @@ class Navigation extends Component {
                             </NavLink>
                         </div>
 
-                        <div className="logout" onClick={() => this.props.logout()}>
+                        <div className="logout" onClick={() => this.handleLogout()}>
                             Logout <FontAwesomeIcon icon="sign-out-alt" /> 
                         </div>
                     </div>
@@ -119,4 +125,4 @@ const mapStateToProps = (state) => {
 
 Navigation = connect(mapStateToProps, actions)(Navigation);
 
-export default Navigation;
+export default withRouter(Navigation);

@@ -1,15 +1,34 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const FormSideBarList = props => {
     const managerList = props.data.map(item => {
         return (
             <div key={item._id} className="manager-list-container">
-                <div className="list-thumb">
-                    <p>{item.review}</p>
-                </div>
+                {item.review ? (
+                    <div className="list-thumb">
+                        <p>{item.review}</p>
+                    </div>
+                ) : item.imgProfileUrl ? (
+                    <div className="list-thumb">
+                        <img src={item.imgProfileUrl} />
+                    </div>
+                ) : null}
 
-                <div className="list-name">
-                    {item.name}
+                <div className="name-actions-wrapper">
+                    <div className="list-name">
+                        {item.name}
+                    </div>
+
+                    <div className="action-icons">
+                        <a className="action-icon" onClick={() => props.handleEditClick(item)}>
+                            <FontAwesomeIcon icon={['far', "edit"]} />
+                        </a>
+
+                        <a className="action-icon" onClick={() => props.handleDeleteClick(item)}>
+                            <FontAwesomeIcon icon="trash" />
+                        </a>
+                    </div>
                 </div>
             </div>
         )

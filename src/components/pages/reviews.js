@@ -30,20 +30,18 @@ class Reviews extends Component {
     }
 
     nextSlide() {
-        // console.log("Next Slide")
         if (this.state.currentReview === this.state.reviews.length - 1 ) {
             this.setState({
                 currentReview: 0
             })
         } else {
             this.setState({
-                currentReview: + 1
+                currentReview: this.state.currentReview + 1
             })
         }
     }
 
     prevSlide() {
-        // console.log("Previous Slide")
         if (this.state.currentReview === 0) {
             this.setState({
                 currentReview: this.state.reviews.length - 1
