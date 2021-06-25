@@ -21,13 +21,13 @@ const FormSideBarList = props => {
                     </div>
 
                     <div className="action-icons">
-                        <a className="action-icon" onClick={() => props.handleEditClick(item)}>
+                        <div className="action-icon" onClick={() => props.handleEditClick(item)}>
                             <FontAwesomeIcon icon={['far', "edit"]} />
-                        </a>
+                        </div>
 
-                        <a className="action-icon" onClick={() => props.handleDeleteClick(item)}>
+                        <div className="action-icon" onClick={() => props.handleDeleteClick(item)}>
                             <FontAwesomeIcon icon="trash" />
-                        </a>
+                        </div>
                     </div>
                 </div>
             </div>

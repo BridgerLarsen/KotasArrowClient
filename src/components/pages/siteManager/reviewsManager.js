@@ -39,9 +39,9 @@ class ReviewsManager extends Component {
         })
     }
 
-    // handleEditFormSubmission() {
-    //     this.getData();
-    // }
+    handleEditFormSubmission() {
+        this.getData();
+    }
 
     handleEditClick(reviewItem) {
         this.setState({
@@ -88,7 +88,7 @@ class ReviewsManager extends Component {
 
                         <ReviewsManagerForm
                             handleNewFormSubmission={this.handleNewFormSubmission}
-                            // handleEditFormSubmission={this.handleEditFormSubmission}
+                            handleEditFormSubmission={this.handleEditFormSubmission}
                             getData={this.getData}
                             reviewToEdit={this.state.reviewToEdit}
                             clearReviewToEdit={this.clearReviewToEdit}

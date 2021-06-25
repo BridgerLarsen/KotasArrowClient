@@ -1,3 +1,10 @@
+.availability-container {
+    span {
+        display: inline-block;
+        margin: 18px 0px;
+    }
+}
+
 .availability-details-wrapper {
     @include textDetailsSetup();
 
@@ -44,9 +51,4 @@
             margin: 0;
         }
     }
-}
-
-span {
-    display: inline-block;
-    margin: 18px 0px;
 }

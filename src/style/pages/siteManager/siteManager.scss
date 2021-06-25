@@ -43,11 +43,12 @@
     // height: 100%;
     display: grid;
     grid-template-columns: 2.5fr 1fr;
-    height: 546px;
+    height: 544px;
 
     .left-column {
         padding: 40px;
         background-color: $offWhite;
+        overflow-y: auto;
     }
 
     .right-column {
@@ -105,6 +106,22 @@
 .one-column {
     @include base-grid();
     grid-template-columns: 1fr;
+}
+
+.image-uploaders {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 31px;
+
+    .img-profile-url {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+    }
+
+    .image-urls-list {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
 }
 
 
