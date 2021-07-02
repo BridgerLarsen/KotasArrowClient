@@ -46,21 +46,7 @@ class ReviewsManagerForm extends Component {
         }
     }
 
-    // post('http://localhost:5000/api/reviews/add',
-    //     {
-    //         name: this.state.name,
-    //         review: this.state.review
-    //     },
-    //     options,
-    //     { withCredentials: true })
-
     handleSubmit(event) {
-        // const options = {
-        //     headers: {
-        //         'x-auth-token': this.props.token
-        //     }
-        // }
-
         axios({
             method: this.state.apiAction,
             url: this.state.apiUrl,

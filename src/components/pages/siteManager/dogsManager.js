@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import DogsManagerForm from './dogsManagerForm';
 import FormSideBarList from './formSideBarList';
@@ -13,6 +14,35 @@ class DogsManager extends Component {
         }
 
         this.getData = this.getData.bind(this);
+        this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    }
+
+    handleNewFormSubmission(dogItem) {
+        this.setState({
+            dogItems: [dogItem].concat(this.state.dogItems)
+        })
+    }
+
+    handleDeleteClick(dogItem) {
+        axios.delete(
+            `http://localhost:5000/api/dogs/delete/${dogItem._id}`,
+            { headers: {
+                'x-auth-token': this.props.token
+            }},
+            { withCredentials: true })
+        .then(res => {
+            this.setState({
+                dogItems: this.state.dogItems.filter(item => {
+                    return item._id !== dogItem._id;
+                })
+            })
+
+            return res.data;
+        })
+        .catch(err => {
+            console.log("Error trying to delete item:", err.response.data)
+        })
     }
 
     getData() {
@@ -38,7 +68,7 @@ class DogsManager extends Component {
                     <h2 className="form-title">Add a Dog</h2>
 
                         <DogsManagerForm
-                            // handleNewFormSubmission={this.handleNewFormSubmission}
+                            handleNewFormSubmission={this.handleNewFormSubmission}
                             // // handleEditFormSubmission={this.handleEditFormSubmission}
                             // getData={this.getData}
                             // reviewToEdit={this.state.reviewToEdit}
@@ -50,7 +80,7 @@ class DogsManager extends Component {
                         <FormSideBarList 
                             title="Current Dogs"
                             data={this.state.dogItems}  
-                            // handleDeleteClick={this.handleDeleteClick}
+                            handleDeleteClick={this.handleDeleteClick}
                             // handleEditClick={this.handleEditClick}
                         /> 
                     </div>   
@@ -58,5 +88,13 @@ class DogsManager extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.auth.token
+    }
+}
+
+DogsManager = connect(mapStateToProps, null)(DogsManager);
 
 export default DogsManager;

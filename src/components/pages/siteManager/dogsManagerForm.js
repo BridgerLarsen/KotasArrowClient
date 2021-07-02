@@ -15,7 +15,7 @@ class DogsManagerForm extends Component {
         this.state = {
             name: "",
             breedingName: "",
-            gender: "",
+            gender: "Male",
             dateOfBirth: "",
             weight: "",
             height: "",
@@ -28,9 +28,14 @@ class DogsManagerForm extends Component {
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.componentConfig = this.componentConfig.bind(this);
         this.djsProfileImgConfig = this.djsProfileImgConfig.bind(this);
         this.djsImagesListConfig = this.djsImagesListConfig.bind(this);
+        this.buildForm = this.buildForm.bind(this);
+
+        this.imgProfileUrlRef = React.createRef();
+        this.imagesRef = React.createRef();
     }
 
     handleInputChange(event) {
@@ -41,7 +46,7 @@ class DogsManagerForm extends Component {
 
     componentConfig() {
         return {
-            iconFiletypes: ['.jpg', '.png'],
+            iconFiletypes: ['.jpg', '.png', 'jpeg'],
             showFiletypeIcon: true,
             postUrl: "https://httpbin.org/post"
         }
@@ -69,29 +74,54 @@ class DogsManagerForm extends Component {
 
     handleImagesDrops() {
         return {
-            addedfile: file => this.setState({ images: [file].concat(this.state.images) }) 
+            addedfile: file => this.setState({ images: [file].concat(this.state.images) }),
+            removedfile: file => {
+                var imagesArray = this.state.images;
+                const index = imagesArray.indexOf(file);
+                if (index > -1) {
+                    imagesArray.splice(index, 1);
+                    this.setState({
+                        images: imagesArray
+                    })
+                }
+            } 
         }
+    }
+
+
+    buildForm() {
+        let formData = new FormData();  // formData object
+
+        formData.append("name", this.state.name);
+        formData.append("breedingName", this.state.breedingName);
+        formData.append("gender", this.state.gender);
+        formData.append("dateOfBirth", this.state.dateOfBirth);
+        formData.append("dimensions[weight]", this.state.weight);
+        formData.append("dimensions[height]", this.state.height);
+        formData.append("color", this.state.color);
+        
+        if (this.state.imgProfileUrl) {
+            formData.append("imgProfileUrl", this.state.imgProfileUrl);
+        }
+
+        if (this.state.images.length > 0) {
+            this.state.images.map((img, index) => {
+                formData.append(`images`, img)
+            })
+        }
+
+        return formData;
+
     }
 
     handleSubmit(event) {
         axios({
             method: this.state.apiAction,
             url: this.state.apiUrl,
-            data: {
-                name: this.state.name,
-                breedingName: this.state.breedingName,
-                gender: this.state.gender,
-                dateOfBirth: this.state.dateOfBirth,
-                dimensions: {
-                    weight: this.state.weight,
-                    height: this.state.height
-                },
-                color: this.state.color,
-                imgProfileUrl: this.state.imgProfileUrl,
-                images: this.state.images
-            },
+            data: this.buildForm(),    
             headers: {
-                'x-auth-token': this.props.token
+                'x-auth-token': this.props.token,
+                'content-type': 'multipart/form-data'
             },
             withCredentials: true
         })
@@ -99,13 +129,13 @@ class DogsManagerForm extends Component {
             if (this.state.editMode) {
                 console.log("editing a dog")
             } else {
-                console.log("Submitting a new dog")
+                this.props.handleNewFormSubmission(res.data);
             }
 
             this.setState({
                 name: "",
                 breedingName: "",
-                gender: "",
+                gender: "Male",
                 dateOfBirth: "",
                 weight: "",
                 height: "",
@@ -116,9 +146,16 @@ class DogsManagerForm extends Component {
                 apiAction: "post",
                 apiUrl: "http://localhost:5000/api/dogs/add"
             })
+
+            this.imgProfileUrlRef.current.dropzone.removeAllFiles();
+            this.imagesRef.current.dropzone.removeAllFiles();
+
+            // [this.imgProfileUrlRef, this.imagesRef].forEach(ref => {
+            //     ref.current.dropzone.removeAllFiles();
+            // })
         })
         .catch(err => {
-            console.log("Dog Mangager handle submit error:", err)
+            console.log("Dog Mangager handle submit error:", err.response.data)
         })
 
         event.preventDefault();
@@ -202,6 +239,7 @@ class DogsManagerForm extends Component {
                 <div className="image-uploaders">
                     <div className="img-profile-url">
                         <DropzoneComponent 
+                            ref={this.imgProfileUrlRef}
                             config={this.componentConfig()}
                             djsConfig={this.djsProfileImgConfig()}
                             eventHandlers={this.handleProfileImageDrop()}
@@ -217,6 +255,7 @@ class DogsManagerForm extends Component {
 
                     <div className="image-urls-list">
                         <DropzoneComponent
+                            ref={this.imagesRef}
                             config={this.componentConfig()}
                             djsConfig={this.djsImagesListConfig()}
                             eventHandlers={this.handleImagesDrops()}

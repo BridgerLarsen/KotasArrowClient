@@ -11,7 +11,7 @@ const FormSideBarList = props => {
                     </div>
                 ) : item.imgProfileUrl ? (
                     <div className="list-thumb">
-                        <img src={item.imgProfileUrl} />
+                        <img alt={item.name} src={item.imgProfileUrl} />
                     </div>
                 ) : null}
 
