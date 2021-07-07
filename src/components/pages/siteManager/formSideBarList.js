@@ -13,7 +13,30 @@ const FormSideBarList = props => {
                     <div className="list-thumb">
                         <img alt={item.name} src={item.imgProfileUrl} />
                     </div>
+                ) : item.question ? (
+                    <div className="list-thumb">
+                        <h3>Question</h3>
+                        <p>{item.question}</p>
+
+                        <h3>Answer</h3>
+                        <p>{item.answer}</p>
+                    </div>
                 ) : null}
+
+        {/* <div className="faq-question" 
+            onClick={() => onFaqClick(faq._id)}
+            >
+                <div>{faq.question}</div>
+
+                {activeFaq === faq._id ?
+                    <FontAwesomeIcon icon="minus" />
+                    : <FontAwesomeIcon icon="plus" />
+                } 
+            </div>
+            {activeFaq === faq._id ?
+                <p className="faq-answer">{faq.answer}</p>
+                : null
+            } */}
 
                 <div className="name-actions-wrapper">
                     <div className="list-name">

@@ -12,17 +12,7 @@ class FAQ extends Component {
         super(props);
 
         this.state = {
-            types: [
-                "Contacting Us",
-                "Purchasing a Puppy"
-            ],
-            subTypes: [
-                "Application",
-                "Deposit",
-                "Choosing Your Puppy",
-                "Final Payment",
-                "Recieving Your Aussie"
-            ],
+            types: [],
             subTypeCategory: []
         }
     }
@@ -43,13 +33,15 @@ class FAQ extends Component {
             console.log("Error with faq get request", err);
         })
 
-        // this.props.faqData.map((faq, index) => {
-        //     if (faq.subType) {
-        //         this.setState({
-        //             subTypeCategory: faq.type
-        //         })
-        //     }
-        // })
+        axios.get('http://localhost:5000/api/faqTypes', { withCredentials: true })
+        .then(res => {
+            console.log(res.data.faqTypes);
+            this.setState({
+                types: res.data.faqTypes.map(faqType => {
+                    return faqType
+                })
+            })
+        })
     }
 
     render() {
