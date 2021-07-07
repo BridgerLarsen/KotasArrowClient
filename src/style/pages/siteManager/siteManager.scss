@@ -79,6 +79,7 @@
 
     .dogs-form-wrapper {
         display: grid;
+        grid-template-columns: minmax(100px, 1fr);
         row-gap: 31px;
 
         .dogs-form-gender-select {
@@ -121,6 +122,42 @@
     .image-urls-list {
         display: grid;
         grid-template-columns: 3fr 1fr;
+    }
+
+    .edit-images-container {
+        display: grid;
+        row-gap: 20px;
+
+        .edit-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .add-images-btn {
+            @include buttonStyles();
+            border: none;
+            width: 200px;
+            background-color: $gray;
+        }
+    }
+
+    .image-removal-link {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 100%;
+        height: 178px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    svg {
+        color: $warning;
+        font-size: 2.2em;
+        cursor: pointer;
     }
 }
 

@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import DropzoneComponent from 'react-dropzone-component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../../../../node_modules/react-dropzone-component/styles/filepicker.css';
 import '../../../../node_modules/dropzone/dist/min/dropzone.min.css';
 
 import FormButton from '../../formButton';
+import Dropzone from '../../dropzone';
 
 class DogsManagerForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            _id: "",
             name: "",
             breedingName: "",
             gender: "Male",
@@ -22,17 +24,19 @@ class DogsManagerForm extends Component {
             color: "",
             imgProfileUrl: "",
             images: [],
+            existingImages: [],
             editMode: false,
             apiAction: "post",
-            apiUrl: "http://localhost:5000/api/dogs/add"
+            apiUrl: "http://localhost:5000/api/dogs/add",
+            addDropzoneImages: false
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.componentConfig = this.componentConfig.bind(this);
-        this.djsProfileImgConfig = this.djsProfileImgConfig.bind(this);
-        this.djsImagesListConfig = this.djsImagesListConfig.bind(this);
+        this.handleProfileImageDrop = this.handleProfileImageDrop.bind(this);
+        this.handleImagesDrops = this.handleImagesDrops.bind(this);
         this.buildForm = this.buildForm.bind(this);
+        this.toggleAddDropzoneImages = this.toggleAddDropzoneImages.bind(this);
 
         this.imgProfileUrlRef = React.createRef();
         this.imagesRef = React.createRef();
@@ -42,27 +46,6 @@ class DogsManagerForm extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-    }
-
-    componentConfig() {
-        return {
-            iconFiletypes: ['.jpg', '.png', 'jpeg'],
-            showFiletypeIcon: true,
-            postUrl: "https://httpbin.org/post"
-        }
-    }
-
-    djsProfileImgConfig() {
-        return {
-            addRemoveLinks: true,
-            maxFiles: 1
-        }
-    }
-
-    djsImagesListConfig() {
-        return {
-            addRemoveLinks: true
-        }
     }
 
     handleProfileImageDrop() {
@@ -88,6 +71,98 @@ class DogsManagerForm extends Component {
         }
     }
 
+    deleteImage(imageType, image) { 
+        if (imageType === "imgProfileUrl") {
+            axios.delete(
+                `http://localhost:5000/api/dogs/deleteAnImage/${this.state._id}?imgProfileUrl=${this.state.imgProfileUrl}`, 
+                { headers: {
+                        'x-auth-token': this.props.token
+                    }
+                },
+                { withCredentials: true }
+            )
+            .then(res => {
+                this.setState({
+                    imgProfileUrl: ""
+                })
+            })
+            .catch(err => {
+                console.log("Delete Image Error", err);
+            })
+        } else if (imageType === "images") {
+            axios.delete(
+                `http://localhost:5000/api/dogs/deleteAnImage/${this.state._id}?image=${image.src}`, 
+                { headers: {
+                        'x-auth-token': this.props.token
+                    }
+                },
+                { withCredentials: true }
+            )
+            .then(res => {
+                this.setState({
+                    existingImages: this.state.existingImages.filter(img => {
+                        if (img._id !== image._id) {
+                            return img
+                        }
+                    })
+                })
+            })
+            .catch(err => {
+                console.log("Delete Image", err);
+            })
+        }
+    }
+
+    toggleAddDropzoneImages() {
+        if (!this.state.addDropzoneImages) {
+            this.setState({
+                addDropzoneImages: true
+            })
+        } else if (this.state.addDropzoneImages) {
+            this.setState({
+                addDropzoneImages: false
+            })
+        }
+    }
+
+    componentDidUpdate() {
+        if (Object.keys(this.props.dogToEdit).length > 0) {
+            const {
+                _id,
+                name,
+                breedingName,
+                gender,
+                dateOfBirth,
+                dimensions,
+                color,
+                imgProfileUrl,
+                images
+            } = this.props.dogToEdit
+
+            const {
+                weight,
+                height
+            } = dimensions;
+
+            this.props.clearDogToEdit();
+
+            this.setState({
+                _id: _id || "",
+                name: name || "",
+                breedingName: breedingName || "",
+                gender: gender || "Male",
+                dateOfBirth: dateOfBirth || "",
+                weight: weight || "",
+                height: height || "",
+                color: color || "",
+                imgProfileUrl: imgProfileUrl || "",
+                existingImages: images || [],
+                editMode: true,
+                apiAction: "patch",
+                apiUrl: `http://localhost:5000/api/dogs/update/${_id}`
+            })
+        }
+    }
 
     buildForm() {
         let formData = new FormData();  // formData object
@@ -105,13 +180,18 @@ class DogsManagerForm extends Component {
         }
 
         if (this.state.images.length > 0) {
-            this.state.images.map((img, index) => {
-                formData.append(`images`, img)
+            this.state.images.map(img => {
+                formData.append('images', img)
+            })
+        }
+
+        if (this.state.existingImages.length > 0) {
+            this.state.existingImages.map(img => {
+                formData.append('existingImages', img.src)
             })
         }
 
         return formData;
-
     }
 
     handleSubmit(event) {
@@ -127,7 +207,7 @@ class DogsManagerForm extends Component {
         })
         .then(res => {
             if (this.state.editMode) {
-                console.log("editing a dog")
+                this.props.handleEditFormSubmission(); 
             } else {
                 this.props.handleNewFormSubmission(res.data);
             }
@@ -149,13 +229,9 @@ class DogsManagerForm extends Component {
 
             this.imgProfileUrlRef.current.dropzone.removeAllFiles();
             this.imagesRef.current.dropzone.removeAllFiles();
-
-            // [this.imgProfileUrlRef, this.imagesRef].forEach(ref => {
-            //     ref.current.dropzone.removeAllFiles();
-            // })
         })
         .catch(err => {
-            console.log("Dog Mangager handle submit error:", err.response.data)
+            console.log("Dog Mangager handle submit error:", err)
         })
 
         event.preventDefault();
@@ -238,35 +314,64 @@ class DogsManagerForm extends Component {
 
                 <div className="image-uploaders">
                     <div className="img-profile-url">
-                        <DropzoneComponent 
-                            ref={this.imgProfileUrlRef}
-                            config={this.componentConfig()}
-                            djsConfig={this.djsProfileImgConfig()}
-                            eventHandlers={this.handleProfileImageDrop()}
-                        >
-                            <div 
-                                className="dz-message"
-                                style={{ fontSize: "16px" }} 
-                            >
-                                    Profile Image
+                        {this.state.imgProfileUrl.length > 0 && this.state.editMode ? (
+                            <div className="edit-image-wrapper">
+                                <img src={this.state.imgProfileUrl} alt="ImgProfileUrl" />
+
+                                <div className="image-removal-link">
+                                    <div onClick={() => this.deleteImage("imgProfileUrl")}>
+                                        <FontAwesomeIcon icon="ban" />
+                                    </div>
+                                </div>
                             </div>
-                        </DropzoneComponent>
+                        ) : (
+                            <Dropzone 
+                                imgProfileUrlRef={this.imgProfileUrlRef}
+                                title="Profile Image"
+                                handleProfileImageDrop={this.handleProfileImageDrop}
+                            />
+                        )
+                        }
                     </div>
 
-                    <div className="image-urls-list">
-                        <DropzoneComponent
-                            ref={this.imagesRef}
-                            config={this.componentConfig()}
-                            djsConfig={this.djsImagesListConfig()}
-                            eventHandlers={this.handleImagesDrops()}
-                        >
-                            <div 
-                                className="dz-message"
-                                style={{ fontSize: "16px" }} 
-                            >
-                                    Images
+                    <div className={this.state.editMode ? "edit-image-urls-list" : "image-urls-list"}>
+                        {this.state.existingImages && this.state.editMode ? (
+                            <div className="edit-images-container">
+                                <div className="edit-images">
+                                    {this.state.existingImages.map(img => {
+                                        return img._id ? (
+                                            <div key={img._id} className="edit-image-wrapper">
+                                                <img src={img.src} alt="Dog" />
+
+                                                <div className="image-removal-link">
+                                                    <div onClick={() => this.deleteImage("images", img)}>
+                                                        <FontAwesomeIcon icon="ban" />
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                        ) : null
+                                    })}
+                                </div>
+
+                                {this.state.addDropzoneImages ? (
+                                    <Dropzone 
+                                        imagesRef={this.imagesRef}
+                                        title="Images"
+                                        handleImagesDrops={this.handleImagesDrops}
+                                    />
+                                ) : (
+                                    <button className="add-images-btn" onClick={() => this.toggleAddDropzoneImages()}>
+                                        Add images
+                                    </button>
+                                )}
                             </div>
-                        </DropzoneComponent>
+                        ) : (
+                            <Dropzone 
+                                imagesRef={this.imagesRef}
+                                title="Images"
+                                handleImagesDrops={this.handleImagesDrops}
+                            />
+                        )}
                     </div>
                 </div>
 

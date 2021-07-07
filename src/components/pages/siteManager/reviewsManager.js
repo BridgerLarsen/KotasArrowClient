@@ -89,7 +89,6 @@ class ReviewsManager extends Component {
                         <ReviewsManagerForm
                             handleNewFormSubmission={this.handleNewFormSubmission}
                             handleEditFormSubmission={this.handleEditFormSubmission}
-                            getData={this.getData}
                             reviewToEdit={this.state.reviewToEdit}
                             clearReviewToEdit={this.clearReviewToEdit}
                         />

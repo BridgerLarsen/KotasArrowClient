@@ -11,7 +11,8 @@ import {
   faEnvelope,
   faLock,
   faSignOutAlt,
-  faTrash
+  faTrash,
+  faBan
 } from '@fortawesome/free-solid-svg-icons';
 import { faCopyright, faEdit } from '@fortawesome/free-regular-svg-icons';
 import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -55,7 +56,8 @@ library.add(
   faLock,
   faSignOutAlt,
   faEdit,
-  faTrash
+  faTrash,
+  faBan
 );
 
 class App extends Component {

@@ -61,7 +61,7 @@ class ReviewsManagerForm extends Component {
         })
         .then(res => {
             if (this.state.editMode) {
-                this.props.getData();
+                this.props.handleEditFormSubmission();
             } else {
                 this.props.handleNewFormSubmission(res.data)
             }

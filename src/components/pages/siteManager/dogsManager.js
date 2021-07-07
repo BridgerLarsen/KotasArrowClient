@@ -10,18 +10,51 @@ class DogsManager extends Component {
         super(props);
 
         this.state = {
-            dogItems: []
+            dogItems: [],
+            dogToEdit: {}
         }
 
         this.getData = this.getData.bind(this);
         this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
+        this.clearDogToEdit = this.clearDogToEdit.bind(this);
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
+    }
+
+    getData() {
+        axios.get('http://localhost:5000/api/dogs',
+        { withCredentials: true })
+        .then(res => {
+            this.setState({
+                dogItems: res.data.dogs
+            })
+        })
+        .catch(err => {
+            console.log("Error with the request:", err)
+        })
     }
 
     handleNewFormSubmission(dogItem) {
         this.setState({
             dogItems: [dogItem].concat(this.state.dogItems)
         })
+    }
+
+    handleEditClick(dogItem) {
+        this.setState({
+            dogToEdit: dogItem
+        })
+    }
+
+    clearDogToEdit() {
+        this.setState({
+            dogToEdit: {}
+        })
+    }
+
+    handleEditFormSubmission() {
+        this.getData();
     }
 
     handleDeleteClick(dogItem) {
@@ -45,19 +78,6 @@ class DogsManager extends Component {
         })
     }
 
-    getData() {
-        axios.get('http://localhost:5000/api/dogs',
-        { withCredentials: true })
-        .then(res => {
-            this.setState({
-                dogItems: res.data.dogs
-            })
-        })
-        .catch(err => {
-            console.log("Error with the request:", err)
-        })
-    }
-
     componentDidMount() {
         this.getData();
     }
@@ -69,10 +89,9 @@ class DogsManager extends Component {
 
                         <DogsManagerForm
                             handleNewFormSubmission={this.handleNewFormSubmission}
-                            // // handleEditFormSubmission={this.handleEditFormSubmission}
-                            // getData={this.getData}
-                            // reviewToEdit={this.state.reviewToEdit}
-                            // clearReviewToEdit={this.clearReviewToEdit}
+                            handleEditFormSubmission={this.handleEditFormSubmission}
+                            dogToEdit={this.state.dogToEdit}
+                            clearDogToEdit={this.clearDogToEdit}
                         />
                     </div>
 
@@ -81,7 +100,7 @@ class DogsManager extends Component {
                             title="Current Dogs"
                             data={this.state.dogItems}  
                             handleDeleteClick={this.handleDeleteClick}
-                            // handleEditClick={this.handleEditClick}
+                            handleEditClick={this.handleEditClick}
                         /> 
                     </div>   
             </div>
