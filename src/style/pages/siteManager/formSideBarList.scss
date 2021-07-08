@@ -9,6 +9,43 @@
                 @include managerSideBarStyles();
             }
 
+            .faq-thumb-heading,
+            .faq-thumb-subHeading {
+                @include managerSideBarStyles();
+                color: $lightgreen;
+            }
+
+            .faq-thumb-heading {
+                font-size: 25px;
+            }
+
+            .faq-thumb-subHeading {
+                font-size: 18px
+            }
+
+            .answer-heading {
+                display: inline-block;
+                cursor: pointer;
+                margin: 0px;
+                transition: 0.2s all ease-in-out;
+
+                &:hover {
+                    transform: scale(1.12);
+                }
+            }
+
+            .answer {
+                margin-top: 0px;
+            }
+
+            .question-heading {
+                margin-bottom: 0px;
+            }
+
+            .question {
+                margin-top: 0px;
+            }
+
             img {
                 width: 100%;
                 height: 350px;

@@ -1,69 +1,91 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const FormSideBarList = props => {
-    const managerList = props.data.map(item => {
-        return (
-            <div key={item._id} className="manager-list-container">
-                {item.review ? (
-                    <div className="list-thumb">
-                        <p>{item.review}</p>
-                    </div>
-                ) : item.imgProfileUrl ? (
-                    <div className="list-thumb">
-                        <img alt={item.name} src={item.imgProfileUrl} />
-                    </div>
-                ) : item.question ? (
-                    <div className="list-thumb">
-                        <h3>Question</h3>
-                        <p>{item.question}</p>
+class FormSideBarList extends Component {
+    constructor(props) {
+        super(props);
 
-                        <h3>Answer</h3>
-                        <p>{item.answer}</p>
-                    </div>
-                ) : null}
+        this.state = {
+            showFaqAnswer: ""
+        }
 
-        {/* <div className="faq-question" 
-            onClick={() => onFaqClick(faq._id)}
-            >
-                <div>{faq.question}</div>
+        this.toggleAnswer = this.toggleAnswer.bind(this);
+    }
 
-                {activeFaq === faq._id ?
-                    <FontAwesomeIcon icon="minus" />
-                    : <FontAwesomeIcon icon="plus" />
-                } 
-            </div>
-            {activeFaq === faq._id ?
-                <p className="faq-answer">{faq.answer}</p>
-                : null
-            } */}
-
-                <div className="name-actions-wrapper">
-                    <div className="list-name">
-                        {item.name}
-                    </div>
-
-                    <div className="action-icons">
-                        <div className="action-icon" onClick={() => props.handleEditClick(item)}>
-                            <FontAwesomeIcon icon={['far', "edit"]} />
+    toggleAnswer(id) {
+        if (!this.state.showFaqAnswer) {
+            this.setState({
+                showFaqAnswer: id
+            })
+        } else if (this.state.showFaqAnswer === id) {
+            this.setState({
+                showFaqAnswer: ""
+            })
+        } else if (this.state.showFaqAnswer && id) {
+            this.setState({
+                showFaqAnswer: id
+            })
+        } 
+    }
+ 
+    render() {
+        const managerList = this.props.data.map(item => {
+            return (
+                <div key={item._id} className="manager-list-container">
+                    {item.review ? (
+                        <div className="list-thumb">
+                            <p>{item.review}</p>
                         </div>
+                    ) : item.imgProfileUrl ? (
+                        <div className="list-thumb">
+                            <img alt={item.name} src={item.imgProfileUrl} />
+                        </div>
+                    ) : item.question ? (
+                        <div className="list-thumb">
+                            <h3 className="faq-thumb-heading question-heading">Question</h3>
+                            <p className="question">{item.question}</p>
+    
+                            <h4 className="faq-thumb-subHeading">Faq Type: {item.type}</h4>
+    
+                            {item.subType ? (
+                                <h4 className="faq-thumb-subHeading">Faq SubType: {item.subType}</h4>
+                            ) : null}
 
-                        <div className="action-icon" onClick={() => props.handleDeleteClick(item)}>
-                            <FontAwesomeIcon icon="trash" />
+                            <h3 className="faq-thumb-heading answer-heading" onClick={() => this.toggleAnswer(item._id)}>Answer</h3>
+                            
+                            {this.state.showFaqAnswer === item._id ? (
+                                <p className="answer">{item.answer}</p>
+                            ) : null}
+                        </div>
+                    ) : null}
+    
+                    <div className="name-actions-wrapper">
+                        <div className="list-name">
+                            {item.name}
+                        </div>
+    
+                        <div className="action-icons">
+                            <div className="action-icon" onClick={() => this.props.handleEditClick(item)}>
+                                <FontAwesomeIcon icon={['far', "edit"]} />
+                            </div>
+    
+                            <div className="action-icon" onClick={() => this.props.handleDeleteClick(item)}>
+                                <FontAwesomeIcon icon="trash" />
+                            </div>
                         </div>
                     </div>
                 </div>
+            )
+        })
+
+        return (
+            <div className="manager-side-bar-list-wrapper">
+                <h1 className="side-bar-list-title">{this.props.title}</h1>
+    
+                {managerList}
             </div>
         )
-    })
-
-    return (
-        <div className="manager-side-bar-list-wrapper">
-            <h1 className="side-bar-list-title">{props.title}</h1>
-
-            {managerList}
-        </div>
-    )
+    }
 }
 
 export default FormSideBarList;
