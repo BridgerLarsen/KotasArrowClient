@@ -1,0 +1,24 @@
+.faqs-form-wrapper {
+    .faq-form-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 31px;
+    }
+
+    .add-faq-types-btn {
+        @include buttonStyles();
+        border: none;
+        width: 200px;
+        background-color: $gray;
+    }
+}
+
+.manager-wrapper {
+    .faqs-form-wrapper {
+        @include form-layout();
+
+        .faqs-form-answer {
+            @include form-textbox();
+        }
+    }
+}

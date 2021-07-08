@@ -21,18 +21,11 @@
 
     .manager-forms-wrapper {
         height: 100%;
-        // calc(100vh - 423px)
     }
 
     .form-button-wrapper {
         .btn {
-            padding: 17px;
-            background-color: $lightgreen;
-            letter-spacing: 1.5px;
-            font-size: 16px;
-            color: $white;
-            border-radius: 50px;
-            font-family: $SourceSansPro;
+            @include buttonStyles();
             border: none;
             cursor: pointer;
         }
@@ -40,7 +33,6 @@
 }
 
 .manager-wrapper {
-    // height: 100%;
     display: grid;
     grid-template-columns: 2.5fr 1fr;
     height: 544px;
@@ -61,38 +53,8 @@
         border-radius: 10px;
     }
 
-    .reviews-form-wrapper,
-    .faqs-form-wrapper {
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap: 31px;
-
-        .reviews-form-review,
-        .faqs-form-answer {
-            height: 100px;
-            padding: 10px;
-            border: 1px solid $lightgreen;
-        }
-    }
-
     .form-input {
         @include inputElement();
-    }
-
-    .dogs-form-wrapper {
-        display: grid;
-        grid-template-columns: minmax(100px, 1fr);
-        row-gap: 31px;
-
-        .dogs-form-gender-select {
-            color: $gray;
-            border: 1px solid $lightgreen;
-            background-color: transparent;
-            outline: none;
-            padding: 0px 5px;
-            font-size: 22px;
-            font-family: $SourceSansPro;
-        }
     }
 
     .form-title {
@@ -111,71 +73,6 @@
     grid-template-columns: 1fr;
 }
 
-.image-uploaders {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 31px;
 
-    .img-profile-url {
-        display: grid;
-        grid-template-columns: 250px 1fr;
-    }
-
-    .image-urls-list {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-    }
-
-    .edit-images-container {
-        display: grid;
-        row-gap: 20px;
-
-        .edit-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-gap: 20px;
-        }
-
-        .add-images-btn {
-            @include buttonStyles();
-            border: none;
-            width: 200px;
-            background-color: $gray;
-        }
-    }
-
-    .image-removal-link {
-        display: flex;
-        justify-content: center;
-    }
-
-    img {
-        width: 100%;
-        height: 178px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
-
-    svg {
-        color: $warning;
-        font-size: 2.2em;
-        cursor: pointer;
-    }
-}
-
-.faqs-form-wrapper {
-    .faq-form-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        row-gap: 31px;
-    }
-
-    .add-faq-types-btn {
-        @include buttonStyles();
-        border: none;
-        width: 200px;
-        background-color: $gray;
-    }
-}
 
 

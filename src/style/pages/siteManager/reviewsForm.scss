@@ -1,0 +1,7 @@
+.reviews-form-wrapper {
+    @include form-layout();
+
+    .reviews-form-review {
+        @include form-textbox();
+    }
+}
