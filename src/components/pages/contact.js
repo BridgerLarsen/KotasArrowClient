@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 
 import HeaderImage from '../headerImage';
 
+import contactHeaderImage from '../../static/assests/images/groupOfDogsSitting.jpg';
+
 class Contact extends Component {
     render() {
         return (
             <div className="contact-us-container">
                 <HeaderImage 
-                    img={"http://via.placeholder.com/1000x1000"} 
+                    img={contactHeaderImage} 
                     className="contact-img" 
                     height="480px"
                     title="Contact Us"

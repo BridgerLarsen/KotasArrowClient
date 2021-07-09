@@ -3,13 +3,15 @@ import React, { Component } from 'react';
 import HeaderImg from '../../headerImage';
 import Dogs from '../../dogs';
 
+import malesHeaderImage from '../../../static/assests/images/puppies.jpg';
+
 class Males extends Component {
     render() {
         return (
             <div className="males-page-wrapper">
                 <HeaderImg 
                     className="males-page-img"
-                    img="http://via.placeholder.com/1000x1000"  
+                    img={malesHeaderImage}  
                     height="480px"
                     title="Males"
                 /> 

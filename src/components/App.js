@@ -67,10 +67,7 @@ class App extends Component {
 
   authorizedPages() {
     return [
-      <Route key="site-manager" path="/site-manager" component={SiteManager} />
-      // <Route key="review-manager" path="/site-manager/reviews" component={ReviewsManager} />,
-      // <Route key="dog-manager" path="/site-manager/dogs" component={DogsManager} />,
-      // <Route key="faq-manager" path="/site-manager/faqs" component={FaqsManager} />   
+      <Route key="site-manager" path="/site-manager" component={SiteManager} />  
     ];
   }
   render(){

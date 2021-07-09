@@ -1,6 +1,8 @@
 .header-image-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .header-image-logo {
@@ -10,7 +12,6 @@
 
 .header-image-title {
     position: absolute;
-    top: 220px;
     font-size: 40px;
     color: $white;
     font-family: $LibreFont;

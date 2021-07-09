@@ -7,6 +7,8 @@ import * as actions from '../../../actions';
 import HeaderImage from '../../headerImage';
 import FaqDetails from './faqDetails';
 
+import faqHeaderImage from '../../../static/assests/images/australianShepherd.jpg';
+
 class FAQ extends Component {
     constructor(props) {
         super(props);
@@ -48,8 +50,8 @@ class FAQ extends Component {
         return (
             <div className="faq-container">
                 <HeaderImage 
-                    className="faq-page-img" 
-                    img="http://via.placeholder.com/1000x1000"  
+                    className="faq-page-img"  
+                    img={faqHeaderImage}  
                     height="480px"
                     title="FAQ"
                 />

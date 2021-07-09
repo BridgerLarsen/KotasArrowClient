@@ -4,13 +4,17 @@ import { NavLink } from 'react-router-dom';
 import HeaderImage from '../headerImage';
 import ContentImgDetails from '../contentImgDetails';
 
+import availabilityHeaderImage from '../../static/assests/images/australianShepherdPuppies.jpeg';
+import dogAndLake from '../../static/assests/images/dogAndLake.jpg';
+import aussie from '../../static/assests/images/aussieSitting.jpg';
+
 class Availability extends Component {
     render() {
         return (
             <div className="availability-container">
                 <HeaderImage 
                     className="availablity"
-                    img="http://via.placeholder.com/1000x1000" 
+                    img={availabilityHeaderImage} 
                     height="480px"
                     title="Availability"
                 />
@@ -38,7 +42,7 @@ class Availability extends Component {
                 <ContentImgDetails 
                     className="availability" 
                     height="480px"
-                    img={"http://via.placeholder.com/1000x1000"}
+                    img={dogAndLake}
                     title="Wanting to Add a Kota's Arrow Australian Shepherd to your Family?"
                     description="Start by filling out this questionnaire"
                     buttonHeader="Questionnaire"
@@ -61,7 +65,7 @@ class Availability extends Component {
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere sapiente fugit ad illo delectus repellendus!</p>
 
-                        <img alt="availabiltiy" className="purchase-detail-img" src="http://via.placeholder.com/480x720" />
+                        <img alt="availabiltiy" className="purchase-detail-img" src={aussie} />
 
                         <p className="purchase-detail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum sequi culpa veniam debitis minus facere fugit maxime sed vel! Inventore similique natus officiis aperiam.</p>
 

@@ -8,16 +8,18 @@
 
         .page-content {
             width: 1100px;
-            padding: 60px 0px;
+            padding: 60px 40px;
 
             .page-content-img-one {
                 float: right;
                 margin-left: 1.5em;
+                width: 400px;
             }
 
             .page-content-img-two {
                 float: left;
                 margin-right: 1.5em;
+                width: 360px;
             }
 
             .page-content-text {
@@ -30,3 +32,31 @@
         }
     }
 }
+
+@media only screen and (max-width: 1100px) {
+    .page-content {
+        width: 100%;
+        text-align: center;
+
+        .page-content-img-one {
+            width: 300px;
+        }
+
+        .page-content-img-two {
+            width: 260px;
+        }
+    }
+}
+
+@media only screen and (max-width: 465px) {
+    .page-content-img-one {
+        float: none!important;
+        margin-left: 0!important;
+    }
+    
+    .page-content-img-two {
+        float: none!important;
+        margin-right: 0!important;
+    }
+}
+

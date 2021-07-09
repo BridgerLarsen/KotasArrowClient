@@ -81,3 +81,43 @@
     }
 }
 
+
+// Media Queries
+
+@media only screen and (max-width: 1100px) {
+    .review-slider-container {
+        display: grid!important;
+        grid-template-columns: [left-column-s] 1fr [left-column-e center-s] 1fr [center-e right-column-s] 1fr [right-column-e]!important;
+        height: 100%!important;
+        align-items: center!important;
+        justify-items: center!important;
+
+        .review-wrapper {
+            grid-column: center-s/center-e!important;
+        }
+
+        .fa-chevron-left {
+            grid-column: left-column-s/left-column-e!important;
+            padding-left: 10px;
+        }
+
+        .fa-chevron-right {
+            grid-column: right-column-s/right-column-e!important;
+            padding-right: 10px;
+        }
+
+        .review-count {
+            grid-column: center-s/center-e!important;
+            padding-bottom: 35px!important;
+        }
+    }
+
+    .review-wrapper {
+        padding: 85px 42px!important;
+    
+        .slide {
+            width: 100%!important;
+        }
+    }
+}
+

@@ -28,3 +28,9 @@
     }
 
 }
+
+@media only screen and (max-width: 1175px) {
+    .contact-information-wrapper {
+        grid-template-columns: 1fr;
+    }
+}

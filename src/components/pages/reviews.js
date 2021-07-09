@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import HeaderImage from '../headerImage';
 
+import reviewsHeaderImage from '../../static/assests/images/puppiesOnDoorStep.jpg';
+
 class Reviews extends Component {
     constructor() {
         super();
@@ -58,7 +60,7 @@ class Reviews extends Component {
             <div className="review-page-wrapper">
                 <HeaderImage
                     className="review-page-img" 
-                    img="http://via.placeholder.com/1000x1000"  
+                    img={reviewsHeaderImage}  
                     height="480px"
                     title="Customer Reviews"
                 />

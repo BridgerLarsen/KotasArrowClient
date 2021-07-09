@@ -65,7 +65,7 @@ class Navigation extends Component {
                         >
 
                         <div className={`${this.state.dropdown ? "drop-down-active" : "drop-down-inactive"}` }>
-                            <NavLink to="/our-aussies">
+                            <NavLink className="drop-down" to="/our-aussies">
                                 Our Aussies <FontAwesomeIcon icon="sort-down" />
                             </NavLink>
 

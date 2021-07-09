@@ -5,7 +5,9 @@ import ContentImgDetails from '../contentImgDetails';
 import Button from '../buttons';
 import Dogs from '../dogs';
 
-import headerImage from '../../static/assests/images/puppies.jpg'
+import headerImage from '../../static/assests/images/puppies.jpg';
+import aboutUsImage from '../../static/assests/images/puppiesTwo.jpg';
+import dogAndLake from '../../static/assests/images/dogAndLake.jpg';
 
 class Home extends Component {
     render() {
@@ -36,7 +38,7 @@ class Home extends Component {
                     <ContentImgDetails 
                         className="availability" 
                         height="480px"
-                        img={"https://greenvalleyaussies.com/assets/uploads/bg__mabey-family-farm.jpg"}
+                        img={dogAndLake}
                         title="Wanting to Add a Kota's Arrow Australian Shepherd to your Family?"
                         description="Begin by filling out our Questionnaire and learning more on our FAQ page."
                         buttonHeader="Check Availability"
@@ -49,7 +51,7 @@ class Home extends Component {
                 <div className="homepage-about-wrapper">
                     <div className="about-container">
                         <div className="about-left-column">
-                            <img alt="Home About" className="about-img" src="http://via.placeholder.com/550x464" />     
+                            <img alt="Home About" className="about-img" src={aboutUsImage} />     
                         </div>
 
                         <div className="about-right-column">

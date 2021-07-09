@@ -38,6 +38,7 @@
         .purchase-detail-img {
             float: right;
             margin-left: 16px;
+            width: 480px;
         }
     }
 }
@@ -50,5 +51,33 @@
         ul {
             margin: 0;
         }
+    }
+}
+
+// Media Queries 
+
+@media only screen and (max-width: 750px) {
+    .purchase-info-wrapper {
+        text-align: center;
+        font-size: 14px!important;
+
+        .purchase-heading {
+            font-size: 24px!important;
+        }
+    
+        .purchase-detail-img {
+            width: 320px!important;
+        }
+    }
+
+    .purchase-detail-points {
+        text-align: initial!important;
+    }
+}
+
+@media only screen and (max-width: 565px) {
+    .purchase-detail-img {
+        margin: 0!important;
+        float: none!important;
     }
 }
