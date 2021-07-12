@@ -3,6 +3,11 @@
     justify-content: center;
     padding: 70px;
 
+    .login-error-text {
+        font-size: 16px;
+        color: $warning;
+    }
+
     h1 {
         font-size: 30px;
     }

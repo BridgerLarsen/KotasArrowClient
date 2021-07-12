@@ -75,7 +75,7 @@
 
 // Media queries
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1300px) {
     .nav-wrapper {
         position: initial;
         background-color: $gray;
@@ -87,6 +87,7 @@
             grid-template-columns: 1fr;
             row-gap: 10px;
             text-align: center;
+            justify-items: center;
 
             .navlink-wrapper {
                 position: none;
@@ -98,8 +99,15 @@
 
                 a {
                     margin: 0px;
+                    width: 115px;
                 }
             }
+        }
+
+        .right-column-nav-links {
+            grid-column: left-links-s/left-links-e;
+            justify-self: center;
+            margin-top: 10px;
         }
     }
 }

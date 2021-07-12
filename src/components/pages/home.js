@@ -8,6 +8,7 @@ import Dogs from '../dogs';
 import headerImage from '../../static/assests/images/puppies.jpg';
 import aboutUsImage from '../../static/assests/images/puppiesTwo.jpg';
 import dogAndLake from '../../static/assests/images/dogAndLake.jpg';
+import Logo from '../../static/assests/logos/kotas-arrow.PNG';
 
 class Home extends Component {
     render() {
@@ -17,7 +18,7 @@ class Home extends Component {
                     img={headerImage} 
                     className="homepage-img" 
                     height="874px"
-                    logo={"https://greenvalleyaussies.com/assets/uploads/2020/01/logo-white-shadow.png"}
+                    logo={Logo}
                 />
 
                 <div className="homepage-content-detail">

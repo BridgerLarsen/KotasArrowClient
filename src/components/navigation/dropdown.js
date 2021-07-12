@@ -69,7 +69,7 @@ class DropDown extends Component {
                     onMouseLeave={this.maleMouseLeave}
                 >
                     <Link to="/our-aussies/males">
-                        Males <FontAwesomeIcon icon="caret-right" />
+                        Males <FontAwesomeIcon icon={window.innerWidth <= 1100 ? "sort-down" : "caret-right"} />
                     </Link>
 
                     {this.state.maleDropdown ? 
@@ -84,7 +84,7 @@ class DropDown extends Component {
                     onMouseLeave={this.femaleMouseLeave}
                 >
                     <Link to="/our-aussies/females">
-                        Females <FontAwesomeIcon icon="caret-right" />
+                        Females <FontAwesomeIcon icon={window.innerWidth <= 1100 ? "sort-down" : "caret-right"} />
                     </Link>
 
                     {this.state.femaleDropdown ? 

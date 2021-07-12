@@ -41,20 +41,22 @@ class Login extends Component {
         setTimeout(() => {
             if (this.props.isAuthenticated) {
                 this.props.history.push("/")
+            } else if (!this.props.isAuthenticated) {
+                this.setState({
+                    errorText: "Invalid Credentials!"
+                })
             }
         }, 500);
     }
-
-    // NEXT THING TO BUILD IS TO CHECK FOR VALID TOKEN AND USER
 
     render() {
         return (
             <div className="login-wrapper">
                 <h1>Login to access your dashboard</h1>
 
-                {/* <div className="login-error-text">
+                <div className="login-error-text">
                     {this.state.errorText}
-                </div> */}
+                </div>
 
                 <form onSubmit={this.handleSubmit} className="auth-form-wrapper">
                     

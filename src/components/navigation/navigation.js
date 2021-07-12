@@ -12,7 +12,7 @@ class Navigation extends Component {
         super();
 
         this.state = {
-            dropdown: false 
+            dropdown: false
         }
 
         this.mouseEnter = this.mouseEnter.bind(this);
@@ -59,9 +59,9 @@ class Navigation extends Component {
                     </div>
 
                     <div 
-                        className="navlink-wrapper"
-                        onMouseEnter={this.mouseEnter}
-                        onMouseLeave={this.mouseLeave}
+                        className="navlink-wrapper" 
+                            onMouseEnter={this.mouseEnter}
+                            onMouseLeave={this.mouseLeave} 
                         >
 
                         <div className={`${this.state.dropdown ? "drop-down-active" : "drop-down-inactive"}` }>
