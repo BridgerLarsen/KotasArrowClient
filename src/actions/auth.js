@@ -7,32 +7,7 @@ import {
     LOGIN_FAIL,
     LOGOUT_SUCCESS,
     AUTH_ERROR
-    // REGISTER_SUCCESS,
-    // REGISTER_FAIL
 } from './types';
-
-// export const getToken = () => {
-//     return function(dispatch) {
-//         axios.get('http://localhost:5000/api/auth/logged_in', 
-//         { withCredentials: true })    
-//         .then(res => {
-//             if (res.data.token) {
-//                 dispatch({
-//                     type: TOKEN_EXISTS,
-//                     payload: `${res.data.token}` 
-//                 })
-//             } else {
-//                 dispatch({
-//                     type: TOKEN_EXISTS,
-//                     payload: null
-//                 })
-//             }
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         })
-//     }
-// }
 
 // Check token & load user
 export const loadUser = () => {
@@ -94,7 +69,6 @@ export const login = ( email, password ) => {
             })
         })
         .catch(err => {
-            // console.log("Error trying to sign in", err.response.status, err.response.data);
             dispatch({
                 type: LOGIN_FAIL,
                 payload: err.response.data

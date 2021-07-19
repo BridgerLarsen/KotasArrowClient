@@ -1,22 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { 
-  faSortDown, 
-  faChevronRight, 
-  faChevronLeft, 
-  faCaretRight,
-  faPlus,
-  faMinus,
-  faEnvelope,
-  faLock,
-  faSignOutAlt,
-  faTrash,
-  faBan
-} from '@fortawesome/free-solid-svg-icons';
-import { faCopyright, faEdit } from '@fortawesome/free-regular-svg-icons';
-import { faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
 
 import Home from './pages/home';
 import About from './pages/about';
@@ -34,33 +18,18 @@ import NoMatch from './pages/noMatch';
 import Navigation from './navigation/navigation';
 import Footer from './footer';
 import SiteManager from './pages/siteManager/siteManager';
-// import ReviewsManager from './pages/siteManager/reviewsManager';
-// import DogsManager from './pages/siteManager/dogsManager';
-// import FaqsManager from './pages/siteManager/faqsManager';
 
 import * as actions from '../actions';
 import ScrollToTop from '../helpers/scrollToTop';
-
-library.add(
-  faSortDown, 
-  faYoutube, 
-  faFacebook,
-  faInstagram, 
-  faCopyright,
-  faChevronRight,
-  faChevronLeft,
-  faCaretRight,
-  faPlus,
-  faMinus,
-  faEnvelope,
-  faLock,
-  faSignOutAlt,
-  faEdit,
-  faTrash,
-  faBan
-);
+import Icons from '../helpers/icons';
 
 class App extends Component {
+  constructor() {
+    super();
+
+    Icons();
+  }
+
   componentDidMount() {
       this.props.loadUser();
   }

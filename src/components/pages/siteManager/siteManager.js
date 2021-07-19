@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-// import { NavLink } from 'react-router-dom';
-// import axios from 'axios';
 
 import ReviewsManager from './reviewsManager';
 import DogsManager from './dogsManager';
 import FaqsManager from './faqsManager';
-
-// import HeaderImage from '../../headerImage';
 
 class SiteManager extends Component {
     constructor(props) {

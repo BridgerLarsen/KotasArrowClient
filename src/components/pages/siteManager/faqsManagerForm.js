@@ -52,6 +52,77 @@ class FaqsManagerForm extends Component {
         }
     }
 
+    handleNewTypes(data) {
+        let type = {
+            exists: false,
+            typeData: {}
+        };
+        let subType = {
+            exists: false,
+            sub: []
+        };
+
+        this.props.faqTypes.map(item => {
+            if (item.type === data.type) {
+                type.exists = true;
+                type.typeData = item
+
+                subType.sub = item.subType
+
+                item.subType.filter(sub => {
+                    subType.exists = sub.name === data.subType
+                })
+            }
+        })
+
+        const typesData = () => {
+            if (!this.state.subType) {
+                return {
+                    type: data.type
+                }
+            } else if (this.state.subType) {
+                let subTypeData = subType.sub.map(item => {
+                    return { name: item.name }
+                }).concat([{ name: data.subType }]);
+                
+                return {
+                    type: data.type,
+                    subType: subTypeData
+                };
+            }
+        }
+
+        const apiCall = (method, url) => {
+            axios({
+                method,
+                url,
+                data: typesData(),
+                headers: {
+                    'x-auth-token': this.props.token
+                },
+                withCredentials: true 
+            })
+            .then(res => {
+                type.exists = false;
+                type.typeData = {};
+                subType.exists = false;
+                subType.sub = [];
+                return res;
+            })
+            .catch(err => {
+                console.log(err.response.data, err);
+            })
+        }
+
+        if (!type.exists) {
+            apiCall('post','http://localhost:5000/api/faqTypes/add');
+        } else if (type.exists && !subType.exists) {
+            apiCall('patch', `http://localhost:5000/api/faqTypes/update/${type.typeData._id}`);
+        } else {
+            return null
+        }
+    }
+
     handleSubmit(event) {
         axios({
             method: this.state.apiAction,
@@ -70,8 +141,10 @@ class FaqsManagerForm extends Component {
         .then(res => {
             if (this.state.editMode) {
                 this.props.handleEditFormSubmission();
+                this.handleNewTypes(res.data);
             } else {
                 this.props.handleNewFormSubmission(res.data)
+                this.handleNewTypes(res.data);
             }
 
             this.setState({
@@ -81,7 +154,7 @@ class FaqsManagerForm extends Component {
                 subType: "",
                 editMode: false,
                 apiAction: "post",
-                apiUrl: "http://localhost:5000/api/reviews/add"
+                apiUrl: "http://localhost:5000/api/faqs/add"
             })
         })
         .catch(err => {
@@ -94,55 +167,45 @@ class FaqsManagerForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} className="faqs-form-wrapper">
-                {!this.props.inFaqTypes ? (
-                    <div className="faq-form-container">
+                <div className="faq-form-container">
+                    <input
+                        className="faqs-form-question form-input"
+                        type="text"
+                        name="question"
+                        placeholder="Question"
+                        value={this.state.question}
+                        onChange={this.handleInputChange}
+                    />
+
+                    <div className="two-column">
                         <input
-                            className="faqs-form-question form-input"
+                            className="faqs-form-type form-input"
                             type="text"
-                            name="question"
-                            placeholder="Question"
-                            value={this.state.question}
+                            name="type"
+                            placeholder="Faq Type"
+                            value={this.state.type}
                             onChange={this.handleInputChange}
                         />
 
-                        <div className="two-column">
-                            <input
-                                className="faqs-form-type form-input"
-                                type="text"
-                                name="type"
-                                placeholder="Faq Type"
-                                value={this.state.type}
-                                onChange={this.handleInputChange}
-                            />
-
-                            <input
-                                className="faqs-form-subType form-input"
-                                type="text"
-                                name="subType"
-                                placeholder="Subtype(If Applicable)"
-                                value={this.state.subType}
-                                onChange={this.handleInputChange}
-                            />
-                        </div>
-
-                        <textarea
-                            className="faqs-form-answer form-input"
+                        <input
+                            className="faqs-form-subType form-input"
                             type="text"
-                            name="answer"
-                            placeholder="Answer"
-                            value={this.state.answer}
+                            name="subType"
+                            placeholder="Subtype(If Applicable)"
+                            value={this.state.subType}
                             onChange={this.handleInputChange}
                         />
                     </div>
-                ) : this.props.inFaqTypes ? (
-                    <div>
-                        dfakldh
-                    </div>
-                ): null}
 
-                {/* <button className="add-faq-types-btn" onClick={() => this.props.handleFaqFormChange()}>
-                    Add Faq Types
-                </button> */}
+                    <textarea
+                        className="faqs-form-answer form-input"
+                        type="text"
+                        name="answer"
+                        placeholder="Answer"
+                        value={this.state.answer}
+                        onChange={this.handleInputChange}
+                    />
+                </div>
 
                 <FormButton title="Save" /> 
             </form>

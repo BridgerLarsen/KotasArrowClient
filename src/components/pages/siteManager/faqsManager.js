@@ -12,8 +12,7 @@ class FaqsManager extends Component {
         this.state = {
             faqItems: [],
             faqToEdit: {},
-            faqTypes: [],
-            inFaqTypes: false
+            faqTypes: []
         }
 
         this.getData = this.getData.bind(this);
@@ -22,7 +21,7 @@ class FaqsManager extends Component {
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.clearFaqToEdit = this.clearFaqToEdit.bind(this);
         this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
-        this.handleFaqFormChange = this.handleFaqFormChange.bind(this);
+        this.handleDeleteFaqTypes = this.handleDeleteFaqTypes.bind(this);
     }
 
     getData() {
@@ -34,6 +33,13 @@ class FaqsManager extends Component {
         })
         .catch(err => {
             console.log("Error with get request:", err) 
+        })
+
+        axios.get('http://localhost:5000/api/faqTypes', { withCredentials: true })
+        .then(res => {
+            this.setState({
+                faqTypes: res.data.faqTypes
+            })
         })
     }
 
@@ -67,29 +73,54 @@ class FaqsManager extends Component {
             }},
             { withCredentials: true })
         .then(res => {
+            this.handleDeleteFaqTypes(res.data);
+
             this.setState({
                 faqItems: this.state.faqItems.filter(item => {
                     return item._id !== faqItem._id;
                 })
             })
-
-            return res.data;
         })
         .catch(err => {
             console.log("Error trying to delete item:", err.response.data)
         })
     }
 
-    handleFaqFormChange() {
-        if (!this.state.inFaqTypes) {
-            this.setState({
-                inFaqTypes: true
+    handleDeleteFaqTypes(data) {
+        let typesArr = [];
+            let type = {};
+
+            this.state.faqItems.map(item => {
+                if (item.type === data.type) {
+                    return typesArr.push(item.type)
+                }
             })
-        } else if (this.state.inFaqTypes) {
-            this.setState({
-                inFaqTypes: false
-            })
-        }
+
+            this.getData();
+
+            if (typesArr && typesArr.length === 1) {
+                this.state.faqTypes.map(item => {
+                    if (item.type === data.type) {
+                        type = item;
+                    }
+                })
+
+                axios.delete(
+                    `http://localhost:5000/api/faqTypes/delete/${type._id}`,
+                    {
+                        headers: {
+                            'x-auth-token': this.props.token
+                        }
+                    },
+                    { withCredentials: true }
+                )
+                .then(res => {
+                    return res;
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            }
     }
 
     componentDidMount() {
@@ -106,7 +137,7 @@ class FaqsManager extends Component {
                         faqToEdit={this.state.faqToEdit}
                         clearFaqToEdit={this.clearFaqToEdit}
                         handleEditFormSubmission={this.handleEditFormSubmission}
-                        inFaqTypes={this.state.inFaqTypes}
+                        faqTypes={this.state.faqTypes}
                         handleFaqFormChange={this.handleFaqFormChange}
                     />
                 </div>
@@ -117,7 +148,6 @@ class FaqsManager extends Component {
                         data={this.state.faqItems}
                         handleEditClick={this.handleEditClick}
                         handleDeleteClick={this.handleDeleteClick}
-                        inFaqTypes={this.state.inFaqTypes}
                         faqTypes={this.state.faqTypes}
                     />
                 </div>

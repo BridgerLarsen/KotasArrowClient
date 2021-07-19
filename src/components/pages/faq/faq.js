@@ -15,7 +15,7 @@ class FAQ extends Component {
 
         this.state = {
             types: [],
-            subTypeCategory: []
+            typesIncludesubTypes: []
         }
     }
 
@@ -23,13 +23,6 @@ class FAQ extends Component {
         axios.get('http://localhost:5000/api/faqs')
         .then(res => {
             this.props.setFaqData(res.data.faqs);
-            res.data.faqs.map((faq, index) => {
-                if (faq.subType) {
-                    this.setState({
-                        subTypeCategory: faq.type
-                    })
-                }
-            })
         })
         .catch(err => {
             console.log("Error with faq get request", err);
@@ -37,12 +30,23 @@ class FAQ extends Component {
 
         axios.get('http://localhost:5000/api/faqTypes', { withCredentials: true })
         .then(res => {
-            console.log(res.data.faqTypes);
-            this.setState({
-                types: res.data.faqTypes.map(faqType => {
-                    return faqType
-                })
+            let subTypesArray = [];
+
+            res.data.faqTypes.map(item => {
+                if (item.subType.length > 0) {
+                    subTypesArray.push(item.type)
+                }
             })
+            
+            this.setState({
+                types: res.data.faqTypes.map(item => {
+                    return item
+                }),
+                typesIncludesubTypes: subTypesArray
+            })
+        })
+        .catch(err => {
+            console.log(err);
         })
     }
 
@@ -64,7 +68,7 @@ class FAQ extends Component {
                             <FaqDetails 
                                 types={this.state.types} 
                                 subTypes={this.state.subTypes}
-                                subTypeCategory={this.state.subTypeCategory}
+                                typesIncludesubTypes={this.state.typesIncludesubTypes}
                             />
                         </div>
                     </div>

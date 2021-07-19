@@ -57,15 +57,15 @@ class FaqDetails extends Component {
                         <div className="faq-details-wrapper" key={index}>
                             <h3 className="faq-details-type">{faqType.type}</h3>
                             
-                            {faqType.type === this.props.subTypeCategory ?
+                            {this.props.typesIncludesubTypes.includes(faqType.type) ?
                                 faqType.subType.map((subType, index) => {
                                     return (
                                         <div key={index}>
-                                            <h4 className="faq-details-subType">{`${index + 1}. ${subType}`}</h4>
+                                            <h4 className="faq-details-subType">{`${index + 1}. ${subType.name}`}</h4>
 
                                             
                                             {this.props.faqData.map((faq, index) => {
-                                                if (faq.subType && faq.subType === subType) {
+                                                if (faq.subType && faq.subType === subType.name) {
                                                     return (
                                                         <FaqDetail 
                                                             key={index}
