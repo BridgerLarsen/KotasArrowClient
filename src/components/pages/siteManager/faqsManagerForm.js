@@ -15,7 +15,7 @@ class FaqsManagerForm extends Component {
             subType: "",
             editMode: false,
             apiAction: "post",
-            apiUrl: "http://localhost:5000/api/faqs/add"
+            apiUrl: "/api/faqs/add"
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -47,7 +47,7 @@ class FaqsManagerForm extends Component {
                 subType: subType || "",
                 editMode: true,
                 apiAction: 'patch',
-                apiUrl: `http://localhost:5000/api/faqs/update/${_id}`
+                apiUrl: `/api/faqs/update/${_id}`
             })
         }
     }
@@ -115,9 +115,9 @@ class FaqsManagerForm extends Component {
         }
 
         if (!type.exists) {
-            apiCall('post','http://localhost:5000/api/faqTypes/add');
+            apiCall('post','/api/faqTypes/add');
         } else if (type.exists && !subType.exists) {
-            apiCall('patch', `http://localhost:5000/api/faqTypes/update/${type.typeData._id}`);
+            apiCall('patch', `/api/faqTypes/update/${type.typeData._id}`);
         } else {
             return null
         }
@@ -154,7 +154,7 @@ class FaqsManagerForm extends Component {
                 subType: "",
                 editMode: false,
                 apiAction: "post",
-                apiUrl: "http://localhost:5000/api/faqs/add"
+                apiUrl: "/api/faqs/add"
             })
         })
         .catch(err => {

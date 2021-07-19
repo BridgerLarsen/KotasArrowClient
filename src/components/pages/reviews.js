@@ -20,7 +20,7 @@ class Reviews extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/reviews')
+        axios.get('/api/reviews')
             .then(response => {
                 this.setState({
                     reviews: response.data.reviews

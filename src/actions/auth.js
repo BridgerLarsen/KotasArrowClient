@@ -12,7 +12,7 @@ import {
 // Check token & load user
 export const loadUser = () => {
     return async function(dispatch, getState) {
-        await axios.get('http://localhost:5000/api/auth/logged_in', 
+        await axios.get('/api/auth/logged_in', 
         { withCredentials: true })    
         .then(res => {
             if (res.data.token) {
@@ -35,7 +35,7 @@ export const loadUser = () => {
         dispatch({ type: USER_LOADING });
     
         await axios
-        .get('http://localhost:5000/api/auth/users', 
+        .get('/api/auth/users', 
         headerConfig(getState),
         { withCredentials: true })
         .then(res =>
@@ -55,7 +55,7 @@ export const loadUser = () => {
 
 export const login = ( email, password ) => {
     return function(dispatch) {
-        axios.post('http://localhost:5000/api/auth/login', 
+        axios.post('/api/auth/login', 
         {
             email: email,
             password: password
@@ -79,7 +79,7 @@ export const login = ( email, password ) => {
 
 export const logout = () => {
     return function(dispatch) {
-        axios.delete('http://localhost:5000/api/auth/loggout', 
+        axios.delete('/api/auth/loggout', 
         { withCredentials: true })
         .then(res => {
             if (res.data.loggedOut === "Success") {

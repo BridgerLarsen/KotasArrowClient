@@ -27,7 +27,7 @@ class DogsManagerForm extends Component {
             existingImages: [],
             editMode: false,
             apiAction: "post",
-            apiUrl: "http://localhost:5000/api/dogs/add",
+            apiUrl: "/api/dogs/add",
             addDropzoneImages: false
         }
 
@@ -74,7 +74,7 @@ class DogsManagerForm extends Component {
     deleteImage(imageType, image) { 
         if (imageType === "imgProfileUrl") {
             axios.delete(
-                `http://localhost:5000/api/dogs/deleteAnImage/${this.state._id}?imgProfileUrl=${this.state.imgProfileUrl}`, 
+                `/api/dogs/deleteAnImage/${this.state._id}?imgProfileUrl=${this.state.imgProfileUrl}`, 
                 { headers: {
                         'x-auth-token': this.props.token
                     }
@@ -91,7 +91,7 @@ class DogsManagerForm extends Component {
             })
         } else if (imageType === "images") {
             axios.delete(
-                `http://localhost:5000/api/dogs/deleteAnImage/${this.state._id}?image=${image.src}`, 
+                `/api/dogs/deleteAnImage/${this.state._id}?image=${image.src}`, 
                 { headers: {
                         'x-auth-token': this.props.token
                     }
@@ -159,7 +159,7 @@ class DogsManagerForm extends Component {
                 existingImages: images || [],
                 editMode: true,
                 apiAction: "patch",
-                apiUrl: `http://localhost:5000/api/dogs/update/${_id}`
+                apiUrl: `/api/dogs/update/${_id}`
             })
         }
     }
@@ -224,7 +224,7 @@ class DogsManagerForm extends Component {
                 images: [],
                 editMode: false,
                 apiAction: "post",
-                apiUrl: "http://localhost:5000/api/dogs/add"
+                apiUrl: "/api/dogs/add"
             })
 
             this.imgProfileUrlRef.current.dropzone.removeAllFiles();

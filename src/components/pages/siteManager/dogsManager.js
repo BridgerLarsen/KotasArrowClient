@@ -23,7 +23,7 @@ class DogsManager extends Component {
     }
 
     getData() {
-        axios.get('http://localhost:5000/api/dogs',
+        axios.get('/api/dogs',
         { withCredentials: true })
         .then(res => {
             this.setState({
@@ -59,7 +59,7 @@ class DogsManager extends Component {
 
     handleDeleteClick(dogItem) {
         axios.delete(
-            `http://localhost:5000/api/dogs/delete/${dogItem._id}`,
+            `/api/dogs/delete/${dogItem._id}`,
             { headers: {
                 'x-auth-token': this.props.token
             }},

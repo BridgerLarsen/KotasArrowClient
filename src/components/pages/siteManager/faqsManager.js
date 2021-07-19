@@ -25,7 +25,7 @@ class FaqsManager extends Component {
     }
 
     getData() {
-        axios.get('http://localhost:5000/api/faqs', { withCredentials: true })
+        axios.get('/api/faqs', { withCredentials: true })
         .then(res => {
             this.setState({
                 faqItems: res.data.faqs
@@ -35,7 +35,7 @@ class FaqsManager extends Component {
             console.log("Error with get request:", err) 
         })
 
-        axios.get('http://localhost:5000/api/faqTypes', { withCredentials: true })
+        axios.get('/api/faqTypes', { withCredentials: true })
         .then(res => {
             this.setState({
                 faqTypes: res.data.faqTypes
@@ -67,7 +67,7 @@ class FaqsManager extends Component {
 
     handleDeleteClick(faqItem) {
         axios.delete(
-            `http://localhost:5000/api/faqs/delete/${faqItem._id}`,
+            `/api/faqs/delete/${faqItem._id}`,
             { headers: {
                 'x-auth-token': this.props.token
             }},
@@ -106,7 +106,7 @@ class FaqsManager extends Component {
                 })
 
                 axios.delete(
-                    `http://localhost:5000/api/faqTypes/delete/${type._id}`,
+                    `/api/faqTypes/delete/${type._id}`,
                     {
                         headers: {
                             'x-auth-token': this.props.token

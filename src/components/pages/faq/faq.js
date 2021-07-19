@@ -20,7 +20,7 @@ class FAQ extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/faqs')
+        axios.get('/api/faqs')
         .then(res => {
             this.props.setFaqData(res.data.faqs);
         })
@@ -28,7 +28,7 @@ class FAQ extends Component {
             console.log("Error with faq get request", err);
         })
 
-        axios.get('http://localhost:5000/api/faqTypes', { withCredentials: true })
+        axios.get('/api/faqTypes', { withCredentials: true })
         .then(res => {
             let subTypesArray = [];
 

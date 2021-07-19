@@ -7,7 +7,7 @@ import * as actions from '../actions';
 
 class Dogs extends Component {
     componentDidMount() {
-        axios.get('http://localhost:5000/api/dogs')
+        axios.get('/api/dogs')
             .then(response => { 
                 this.props.setDogsInfo(response.data.dogs)
             })

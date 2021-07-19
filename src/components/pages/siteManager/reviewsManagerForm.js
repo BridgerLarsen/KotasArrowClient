@@ -13,7 +13,7 @@ class ReviewsManagerForm extends Component {
             review: "",
             editMode: false,
             apiAction: "post",
-            apiUrl: "http://localhost:5000/api/reviews/add"
+            apiUrl: "/api/reviews/add"
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,7 +41,7 @@ class ReviewsManagerForm extends Component {
                 review: review || "",
                 editMode: true,
                 apiAction: 'patch',
-                apiUrl: `http://localhost:5000/api/reviews/update/${_id}`
+                apiUrl: `/api/reviews/update/${_id}`
             })
         }
     }
@@ -71,7 +71,7 @@ class ReviewsManagerForm extends Component {
                 review: "",
                 editMode: false,
                 apiAction: "post",
-                apiUrl: "http://localhost:5000/api/reviews/add"
+                apiUrl: "/api/reviews/add"
             })
         })
         .catch(err => {

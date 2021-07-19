@@ -22,7 +22,7 @@ class ReviewsManager extends Component {
     }
 
     getData() {
-        axios.get('http://localhost:5000/api/reviews', { withCredentials: true })
+        axios.get('/api/reviews', { withCredentials: true })
         .then(res => {
             this.setState({
                 reviewItems: res.data.reviews
@@ -57,7 +57,7 @@ class ReviewsManager extends Component {
 
     handleDeleteClick(reviewItem) {
         axios.delete(
-            `http://localhost:5000/api/reviews/delete/${reviewItem._id}`,
+            `/api/reviews/delete/${reviewItem._id}`,
             { headers: {
                 'x-auth-token': this.props.token
             }},
