@@ -2,11 +2,13 @@ import React from "react";
 
 import HeaderImage from '../headerImage'; 
 
+import QuestionnaireHeaderImage from "../../static/assests/images/lightColoredAussie.jpg";
+
 const Questionnaire = () => {
     return (
         <div className="questionnaire-container">
             <HeaderImage 
-                img="http://via.placeholder.com/1000x1000"
+                img={QuestionnaireHeaderImage}
                 title="Questionnaire"
                 className="questionnaire-page-image"
                 height="480px"

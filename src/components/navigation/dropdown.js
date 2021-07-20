@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 
 function DogDropDown(props) {
-    const dogs = props.dogs.map((dogs, index) => {
-        if (dogs.gender.toLowerCase() === props.gender) {
+    const dogs = props.dogs.map((dog, index) => {
+        if (dog.gender.toLowerCase() === props.gender) {
             return (
-                <Link key={index} to={`/our-aussies/${dogs.gender.toLowerCase()}s/${dogs.name.toLowerCase()}`}>
-                    {dogs.name}
+                <Link key={index} to={`/our-aussies/${dog.gender.toLowerCase()}s/${dog.name.toLowerCase()}`}>
+                    {dog.name}
                 </Link>
             )
         }
