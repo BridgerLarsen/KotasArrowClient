@@ -10,7 +10,7 @@ import SimpleReactLightbox from 'simple-react-lightbox'
 import "./style/main.scss"
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(compose((window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : null)(createStore)));
+const createStoreWithMiddleware = applyMiddleware(thunk)(compose((window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f)(createStore)));
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
