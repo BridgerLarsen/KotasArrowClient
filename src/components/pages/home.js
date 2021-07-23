@@ -29,7 +29,7 @@ class Home extends Component {
                         </h1>
 
                         <p className="content-detail-description">
-                            Green Valley Australian Shepherds objective is raising healthy, well socialized and family-centered <br/>
+                            Kotas's Arrow Australian Shepherds objective is raising healthy, well socialized and family-centered <br/>
                             Aussies. We have built a program around the love, care, training and happiness of our dogs!
                         </p>
                     </div>
