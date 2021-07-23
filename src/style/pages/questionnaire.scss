@@ -3,7 +3,6 @@
         display: grid;
         grid-template-rows: [s] 70px [middle-s] 1fr [middle-e] 70px [e];
         justify-content: center;
-        // padding: 70px;
 
         iframe {
             grid-row: middle-s/middle-e;
