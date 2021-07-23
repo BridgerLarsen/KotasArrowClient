@@ -83,3 +83,22 @@
     }
 }
 
+// Media Queries
+
+@media only screen and (max-width: 1100px) {
+    .detail-information-wrapper {
+        grid-template-columns: 1fr!important;
+        justify-items: center;
+
+        .information-image {
+            width: 340px!important;
+            height: 340px!important;
+        }
+    }
+
+    .images {
+        grid-template-rows: 1fr!important;
+        row-gap: 25px;
+    }
+}
+
