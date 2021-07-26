@@ -57,21 +57,43 @@
 // Media Queries 
 
 @media only screen and (max-width: 750px) {
+    .availability-details-wrapper {
+        padding: 20px!important;
+
+        .details-content {
+            width: 100%!important;
+        }
+    }
+
+    .availability-purchase-wrapper {
+        display: block!important;
+        justify-content: none!important;
+        padding: 40px 10px;
+    }
+
     .purchase-info-wrapper {
         text-align: center;
-        font-size: 14px!important;
+        width: 100%!important;
 
         .purchase-heading {
             font-size: 24px!important;
         }
     
         .purchase-detail-img {
-            width: 320px!important;
+            width: 280px!important;
         }
     }
 
-    .purchase-detail-points {
+    .detail-heading {
         text-align: initial!important;
+    }
+
+    .detail-points {
+        columns: 2!important;
+         
+        ul {
+            padding: 0px 0px 0px 20px;
+        }
     }
 }
 

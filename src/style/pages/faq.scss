@@ -57,3 +57,11 @@
         box-sizing: border-box;
     }
 }
+
+// Media Querys
+
+@media only screen and (max-width: 550px) {
+    .faqs-wrapper {
+        padding: 30px!important;
+    }
+}

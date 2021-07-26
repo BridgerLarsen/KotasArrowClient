@@ -46,7 +46,7 @@ class Login extends Component {
                     errorText: "Invalid Credentials!"
                 })
             }
-        }, 500);
+        }, 1500);
     }
 
     render() {

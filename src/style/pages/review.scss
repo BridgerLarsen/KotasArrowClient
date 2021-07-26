@@ -87,7 +87,7 @@
 @media only screen and (max-width: 1100px) {
     .review-slider-container {
         display: grid!important;
-        grid-template-columns: [left-column-s] 1fr [left-column-e center-s] 1fr [center-e right-column-s] 1fr [right-column-e]!important;
+        grid-template-columns: [left-column-s] 1fr [left-column-e center-s] 2fr [center-e right-column-s] 1fr [right-column-e]!important;
         height: 100%!important;
         align-items: center!important;
         justify-items: center!important;
@@ -113,11 +113,17 @@
     }
 
     .review-wrapper {
-        padding: 85px 42px!important;
+        padding: 85px 5px!important;
     
         .slide {
             width: 100%!important;
         }
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    .review-slider-container {
+        grid-template-columns: [left-column-s] 1fr [left-column-e center-s] 220px [center-e right-column-s] 1fr [right-column-e]!important;
     }
 }
 

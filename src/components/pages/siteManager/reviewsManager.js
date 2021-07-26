@@ -18,6 +18,7 @@ class ReviewsManager extends Component {
         this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
         this.clearReviewToEdit = this.clearReviewToEdit.bind(this);
     }
 
